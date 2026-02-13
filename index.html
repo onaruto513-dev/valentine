@@ -7,104 +7,98 @@
   <meta name="theme-color" content="#ff4d6d" />
   <style>
     :root{
-      --pink:#ff4d6d;
-      --magenta:#b5179e;
-      --violet:#7c3aed;
+      --bg1:#ff4d6d;
+      --bg2:#b5179e;
+      --bg3:#6d28d9;
 
       --ink:#0b1020;
       --muted: rgba(11,16,32,.72);
 
-      --glass: rgba(255,255,255,.80);
-      --glass2: rgba(255,255,255,.62);
+      --glass: rgba(255,255,255,.78);
+      --glass2: rgba(255,255,255,.58);
       --stroke: rgba(255,255,255,.42);
 
-      --shadow: 0 34px 120px rgba(0,0,0,.28);
-      --shadow2: 0 18px 44px rgba(0,0,0,.18);
+      --shadow: 0 28px 90px rgba(0,0,0,.28);
+      --shadow2: 0 16px 44px rgba(0,0,0,.18);
 
       --yes1:#34d399; --yes2:#22c55e;
       --no1:#fb7185;  --no2:#ef4444;
 
       --r1: 28px;
-      --r2: 36px;
+      --r2: 34px;
     }
 
-    *{ box-sizing:border-box; }
-    html,body{ height:100%; }
+    *{ box-sizing:border-box }
+    html,body{ height:100% }
     body{
       margin:0;
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
-      color:var(--ink);
+      color: var(--ink);
       overflow:hidden;
       background:
-        radial-gradient(1100px 800px at 15% 12%, rgba(255,214,224,.82) 0%, transparent 60%),
-        radial-gradient(900px 700px at 85% 18%, rgba(255,229,241,.76) 0%, transparent 60%),
-        radial-gradient(900px 700px at 85% 85%, rgba(220,190,255,.30) 0%, transparent 58%),
-        linear-gradient(135deg, var(--pink), var(--magenta) 55%, var(--violet));
+        radial-gradient(1100px 800px at 15% 15%, rgba(255,214,224,.80) 0%, transparent 60%),
+        radial-gradient(900px 700px at 85% 20%, rgba(255,229,241,.75) 0%, transparent 60%),
+        radial-gradient(900px 700px at 85% 85%, rgba(220,190,255,.32) 0%, transparent 58%),
+        linear-gradient(135deg, var(--bg1), var(--bg2) 55%, var(--bg3));
     }
 
-    /* -------- BIG “I LOVE U SO MUCH” BACKGROUND -------- */
-    .bg{
+    /* BIG BACKGROUND: “I LOVE U SO MUCH” */
+    .bg-love{
       position:fixed; inset:0;
       pointer-events:none;
       z-index:0;
       overflow:hidden;
     }
-    .bg .tile{
-      position:absolute; inset:-120px;
-      transform: rotate(-14deg) scale(1.12);
+    .bg-love .tile{
+      position:absolute; inset:-110px;
+      transform: rotate(-14deg) scale(1.08);
       opacity:1;
       mix-blend-mode: overlay;
-      filter: blur(0);
     }
-    .bg .tile::before{
+    .bg-love .tile::before{
       content:
-        "I LOVE U SO MUCH  •  I LOVE U SO MUCH  •  I LOVE U SO MUCH  •  I LOVE U SO MUCH  •  "
-        "I LOVE U SO MUCH  •  I LOVE U SO MUCH  •  I LOVE U SO MUCH  •  I LOVE U SO MUCH  •  "
-        "I LOVE U SO MUCH  •  I LOVE U SO MUCH  •  I LOVE U SO MUCH  •  I LOVE U SO MUCH  •  ";
+        "I LOVE U SO MUCH  •  I LOVE U SO MUCH  •  I LOVE U SO MUCH  •  I LOVE U SO MUCH  •  I LOVE U SO MUCH  •  I LOVE U SO MUCH  •  I LOVE U SO MUCH  •  I LOVE U SO MUCH  •  I LOVE U SO MUCH  •  I LOVE U SO MUCH";
       position:absolute; inset:0;
       white-space:pre;
       font-weight:1000;
-      letter-spacing:.20em;
-      line-height:2.0;
-      font-size: clamp(22px, 3.8vw, 48px);
-      color: rgba(255,255,255,.45); /* strong visibility */
+      letter-spacing:.18em;
+      line-height:1.9;
+      font-size: clamp(22px, 3.9vw, 50px);
+      color: rgba(255,255,255,.44); /* visible on phones */
       text-transform:uppercase;
-      animation: drift 10s linear infinite;
-      text-shadow: 0 10px 40px rgba(0,0,0,.08);
+      animation: drift 9.5s linear infinite;
+      filter: drop-shadow(0 14px 40px rgba(0,0,0,.10));
+    }
+    .bg-love .giant{
+      position:absolute;
+      left:50%; top:50%;
+      transform: translate(-50%,-50%) rotate(-12deg);
+      font-weight:1000;
+      letter-spacing:.06em;
+      text-transform:uppercase;
+      font-size: clamp(74px, 12.5vw, 170px);
+      white-space:nowrap;
+      line-height:1.0;
+      color: rgba(255,255,255,.18);
+      text-shadow: 0 18px 60px rgba(0,0,0,.14);
+      animation: sway 6.5s ease-in-out infinite;
+    }
+    .bg-love .giant span{
+      background: linear-gradient(90deg, rgba(255,255,255,.12), rgba(255,255,255,.34), rgba(255,255,255,.12));
+      -webkit-background-clip:text; background-clip:text;
+      color: transparent;
     }
     @keyframes drift{
       from{ transform: translate3d(0,0,0); }
       to  { transform: translate3d(-20%, -12%, 0); }
     }
-
-    /* giant center words */
-    .bg .giant{
-      position:absolute;
-      left:50%; top:50%;
-      transform: translate(-50%,-50%) rotate(-12deg);
-      font-weight:1000;
-      text-transform:uppercase;
-      letter-spacing:.06em;
-      font-size: clamp(70px, 12vw, 170px);
-      line-height:1.0;
-      white-space:nowrap;
-      color: rgba(255,255,255,.18);
-      text-shadow: 0 20px 70px rgba(0,0,0,.12);
-      animation: giantSway 6.6s ease-in-out infinite;
-      user-select:none;
-    }
-    .bg .giant span{
-      background: linear-gradient(90deg, rgba(255,255,255,.14), rgba(255,255,255,.34), rgba(255,255,255,.14));
-      -webkit-background-clip:text; background-clip:text;
-      color: transparent;
-    }
-    @keyframes giantSway{
+    @keyframes sway{
       0%,100%{ transform: translate(-50%,-50%) rotate(-12deg) translateY(0); }
       50%{ transform: translate(-50%,-50%) rotate(-12deg) translateY(-10px); }
     }
 
-    /* moving soft light */
-    .bgLight{
+    /* soft moving light */
+    .bg-light{
       position:fixed; inset:-45%;
       z-index:0;
       pointer-events:none;
@@ -114,11 +108,11 @@
       mix-blend-mode: soft-light;
     }
     @keyframes lightMove{
-      0%,100%{ transform: translate(-10%, -8%); }
-      50%{ transform: translate(10%, 8%); }
+      0%,100%{ transform: translate(-8%, -6%); }
+      50%{ transform: translate(8%, 6%); }
     }
 
-    /* -------- floating hearts -------- */
+    /* floating hearts */
     .hearts{
       position:fixed; inset:0;
       pointer-events:none;
@@ -133,7 +127,7 @@
       user-select:none;
       will-change: transform, opacity;
       animation: floatUp linear forwards;
-      font-size: clamp(14px, 2.5vw, 28px);
+      font-size: clamp(14px, 2.6vw, 30px);
     }
     @keyframes floatUp{
       from{ transform: translate(-50%, 30px) scale(.9); opacity:0; }
@@ -141,7 +135,7 @@
       to{ transform: translate(-50%, -120vh) scale(1.25); opacity:0; }
     }
 
-    /* -------- main layout -------- */
+    /* layout */
     .wrap{
       position:relative;
       z-index:2;
@@ -157,7 +151,7 @@
       background: linear-gradient(180deg, rgba(255,255,255,.18), rgba(255,255,255,.06));
       border:1px solid rgba(255,255,255,.22);
       backdrop-filter: blur(12px);
-      box-shadow: 0 44px 150px rgba(0,0,0,.20);
+      box-shadow: 0 40px 140px rgba(0,0,0,.20);
     }
     .card{
       border-radius: var(--r1);
@@ -176,11 +170,13 @@
       pointer-events:none;
       z-index:-1;
     }
+
     .header{
       padding:22px 22px 8px;
       display:flex;
+      justify-content:space-between;
       align-items:center;
-      justify-content:center;
+      gap:10px;
     }
     .badge{
       display:inline-flex;
@@ -192,7 +188,25 @@
       border: 1px solid rgba(255, 77, 109, .25);
       font-weight:1000;
       letter-spacing:.2px;
+      white-space:nowrap;
     }
+    .chip{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:10px 12px;
+      border-radius:999px;
+      background: rgba(255,255,255,.75);
+      border:1px solid rgba(0,0,0,.08);
+      box-shadow: 0 10px 20px rgba(0,0,0,.08);
+      font-weight:900;
+      cursor:pointer;
+      user-select:none;
+      transition: transform .12s ease, filter .12s ease;
+    }
+    .chip:active{ transform: translateY(1px) scale(.99); }
+    .chip:hover{ filter:brightness(1.02); transform: translateY(-1px); }
+
     .content{
       padding: 0 22px 18px;
       text-align:center;
@@ -205,15 +219,13 @@
       letter-spacing:-.02em;
     }
     .subtitle{
-      margin:0 auto 14px;
-      max-width:58ch;
+      margin:0 auto 16px;
+      max-width:62ch;
       font-size: clamp(14px, 2.2vw, 18px);
       opacity:.90;
       color: var(--muted);
       line-height:1.55;
     }
-
-    /* typewriter */
     .type{
       display:inline-block;
       border-right: 2px solid rgba(11,16,32,.35);
@@ -239,14 +251,14 @@
       border:1px solid rgba(0,0,0,.08);
       box-shadow: 0 8px 18px rgba(0,0,0,.08);
       font-weight:900;
-      min-width: 260px;
+      min-width: 250px;
       justify-content:space-between;
     }
-    .pill label{ opacity:.65; font-weight:900; }
+    .pill label{ opacity:.65; font-weight:1000; }
     .pill input{
       border:none; outline:none;
       font: inherit;
-      width: 14ch;
+      width: 12ch;
       text-align:right;
       background:transparent;
     }
@@ -262,10 +274,9 @@
       justify-content:center;
       gap:14px;
       margin:18px 0 8px;
-      min-height:72px;
+      min-height:74px;
       position:relative;
     }
-
     button{
       border:none;
       cursor:pointer;
@@ -279,7 +290,6 @@
       touch-action: manipulation;
     }
     button:active{ transform: translateY(1px) scale(.99); }
-
     .yes{
       background: linear-gradient(135deg, var(--yes1), var(--yes2));
       color:white;
@@ -290,7 +300,7 @@
       content:"";
       position:absolute;
       inset:-60% -30%;
-      background: radial-gradient(closest-side, rgba(255,255,255,.48), transparent 60%);
+      background: radial-gradient(closest-side, rgba(255,255,255,.45), transparent 60%);
       transform: translateX(-40%);
       opacity:.55;
       animation: yesShine 2.8s ease-in-out infinite;
@@ -300,13 +310,11 @@
       0%,100%{ transform: translateX(-45%); }
       50%{ transform: translateX(45%); }
     }
-
     .no{
       background: linear-gradient(135deg, var(--no1), var(--no2));
       color:white;
       position:relative;
     }
-
     .yes:hover,.no:hover{ filter:brightness(1.02); transform: translateY(-1px); }
 
     .footer{
@@ -321,7 +329,7 @@
       opacity:.78;
     }
 
-    /* -------- modal overlay -------- */
+    /* modal */
     .overlay{
       position:fixed; inset:0;
       display:none;
@@ -332,7 +340,6 @@
       padding:22px;
     }
     .overlay.show{ display:grid; }
-
     .modal{
       width:min(760px, 96vw);
       border-radius: 28px;
@@ -347,12 +354,12 @@
     .modal::before{
       content:"";
       position:absolute; inset:-70px -70px auto -70px;
-      height:260px;
+      height:280px;
       background: radial-gradient(closest-side, rgba(181,23,158,.22), transparent 70%);
       pointer-events:none;
     }
     .big{
-      font-size: clamp(30px, 5vw, 54px);
+      font-size: clamp(28px, 4.4vw, 52px);
       margin:0 0 10px;
       font-weight:1000;
       letter-spacing:-.02em;
@@ -361,15 +368,10 @@
       margin:0 auto 16px;
       max-width:70ch;
       opacity:.92;
-      line-height:1.65;
-      color: rgba(11,16,32,.82);
+      line-height:1.6;
+      color: rgba(11,16,32,.84);
       font-size: clamp(14px, 2.2vw, 18px);
-      white-space: pre-wrap;
-      text-align:left;
-      background: rgba(17,24,39,.04);
-      border: 1px solid rgba(17,24,39,.08);
-      padding: 14px 14px;
-      border-radius: 16px;
+      white-space: pre-line;
     }
     .close{
       background:#111827;
@@ -385,22 +387,46 @@
       z-index:60;
     }
 
+    /* hidden youtube player */
+    .yt-holder{
+      position:fixed;
+      width:1px; height:1px;
+      left:-9999px; top:-9999px;
+      overflow:hidden;
+    }
+
     @media (max-width:420px){
       .pill{ min-width: 92%; }
       .actions{ gap:10px; }
       button{ padding:14px 16px; }
+      .header{ flex-direction:column; }
     }
   </style>
 </head>
 <body>
-  <div class="bg" aria-hidden="true">
+  <div class="bg-love" aria-hidden="true">
     <div class="tile"></div>
     <div class="giant"><span>I&nbsp;LOVE&nbsp;U&nbsp;SO&nbsp;MUCH</span> 💗</div>
   </div>
-  <div class="bgLight" aria-hidden="true"></div>
+  <div class="bg-light" aria-hidden="true"></div>
 
   <div class="hearts" id="hearts" aria-hidden="true"></div>
   <canvas id="confetti" width="0" height="0" aria-hidden="true"></canvas>
+
+  <!-- Official YouTube embed holder (music). Autoplay w/ sound needs a user tap. -->
+  <div class="yt-holder" aria-hidden="true">
+    <!-- NOTE: This is Ed Sheeran - Perfect official video on YouTube.
+         If YouTube changes, replace the VIDEO_ID below. -->
+    <iframe
+      id="yt"
+      width="560" height="315"
+      src="https://www.youtube.com/embed/2Vv-BfVoq4g?enablejsapi=1&playsinline=1&rel=0"
+      title="YouTube player"
+      frameborder="0"
+      allow="autoplay; encrypted-media"
+      allowfullscreen>
+    </iframe>
+  </div>
 
   <div class="wrap">
     <div class="frame">
@@ -409,11 +435,15 @@
 
         <div class="header">
           <div class="badge">💌 Becher → Denisa</div>
+          <div class="chip" id="startMusicBtn">🎵 Start song</div>
         </div>
 
         <div class="content">
           <h1 class="title">Denisa, will you be my Valentine? 💘</h1>
-          <p class="subtitle"><span class="type" id="typeText"></span></p>
+
+          <p class="subtitle">
+            <span class="type" id="typeText"></span>
+          </p>
 
           <div class="inputs">
             <div class="pill">
@@ -426,7 +456,7 @@
             </div>
           </div>
 
-          <div class="hint">Tap anywhere for hearts ✨ (and try pressing “No” 😄)</div>
+          <div class="hint">Tip: tap “Start song” (phones block autoplay until you tap once) 💗</div>
 
           <div class="actions">
             <button class="yes" id="yesBtn">Yes! 💖</button>
@@ -444,106 +474,89 @@
   <div class="overlay" id="overlay" aria-hidden="true">
     <div class="modal">
       <h2 class="big">YAAAY! 🥰💞</h2>
-      <div class="msg" id="msgText"></div>
-      <button class="close" id="closeBtn">Close 💘</button>
+      <p class="msg" id="msgText"></p>
+      <button class="close" id="closeBtn">Close 💗</button>
     </div>
   </div>
 
   <script>
-    // ------- Typewriter text -------
+    // ===== Typewriter =====
     const typeEl = document.getElementById("typeText");
     const typeLines = [
-      "You are the best 💗 — I made this just for you.",
-      "Even far away, you’re still my favorite person.",
-      "Press “Yes” and make me smile 😌💘"
+      "I built this page just for you 💗",
+      "Because you are the best… always.",
+      "Press “Yes” if you accept my Valentine invite 💘"
     ];
-    let line = 0, i = 0, deleting = false;
-
+    let line = 0, i = 0, del = false;
     function tick(){
-      const current = typeLines[line];
-      if (!deleting){
+      const s = typeLines[line];
+      if(!del){
         i++;
-        typeEl.textContent = current.slice(0,i);
-        if (i >= current.length){
-          deleting = true;
-          setTimeout(tick, 1100);
-          return;
-        }
-      } else {
+        typeEl.textContent = s.slice(0,i);
+        if(i >= s.length){ del = true; setTimeout(tick, 1100); return; }
+      }else{
         i--;
-        typeEl.textContent = current.slice(0,i);
-        if (i <= 0){
-          deleting = false;
-          line = (line + 1) % typeLines.length;
-        }
+        typeEl.textContent = s.slice(0,i);
+        if(i <= 0){ del = false; line = (line+1)%typeLines.length; }
       }
-      setTimeout(tick, deleting ? 28 : 38);
+      setTimeout(tick, del ? 26 : 38);
     }
     tick();
 
-    // ------- Floating hearts -------
+    // ===== Hearts =====
     const heartsLayer = document.getElementById("hearts");
-    const heartChars = ["💗","💖","💘","💝","💞","💕","❤️","🫶","🤍"];
-
+    const heartChars = ["💗","💖","💘","💝","💞","💕","❤️","🫶"];
     function spawnHeart({x=null, y=null, big=false} = {}) {
       const el = document.createElement("div");
       el.className = "heart";
       el.textContent = heartChars[Math.floor(Math.random() * heartChars.length)];
-
       const left = x ?? (Math.random() * window.innerWidth);
       const startY = y ?? (window.innerHeight + 30);
-
       el.style.left = left + "px";
       el.style.top  = startY + "px";
-      el.style.fontSize = big ? "34px" : "";
-
-      const dur = (big ? 3.8 : 5.2) + Math.random() * 3.0;
+      el.style.fontSize = big ? "36px" : "";
+      const dur = (big ? 3.6 : 5.0) + Math.random() * 3.0;
       el.style.animationDuration = dur + "s";
-      el.style.opacity = (0.55 + Math.random() * 0.4).toFixed(2);
-
+      el.style.opacity = (0.55 + Math.random()*0.4).toFixed(2);
       heartsLayer.appendChild(el);
-      setTimeout(() => el.remove(), dur * 1000 + 250);
+      setTimeout(() => el.remove(), dur*1000 + 250);
     }
-
     setInterval(() => spawnHeart(), 220);
 
     function heartBurst(cx, cy) {
-      for (let k = 0; k < 32; k++) {
-        setTimeout(() => {
-          const jx = cx + (Math.random() - 0.5) * 340;
-          const jy = cy + (Math.random() - 0.5) * 160;
-          spawnHeart({ x: jx, y: jy, big: Math.random() > 0.72 });
-        }, k * 14);
+      for (let k=0;k<32;k++){
+        setTimeout(()=>{
+          const jx = cx + (Math.random()-0.5)*340;
+          const jy = cy + (Math.random()-0.5)*150;
+          spawnHeart({x:jx, y:jy, big: Math.random()>0.72});
+        }, k*14);
       }
     }
 
-    // Tap anywhere => mini heart
     window.addEventListener("click", (e) => {
       const overlayOpen = document.getElementById("overlay").classList.contains("show");
-      if (!overlayOpen) spawnHeart({ x: e.clientX, y: e.clientY, big: Math.random() > 0.84 });
+      if (!overlayOpen) spawnHeart({ x:e.clientX, y:e.clientY, big: Math.random()>0.84 });
     }, {capture:true});
 
-    // ------- Playful "No" button (dodges) -------
+    // ===== No button dodge =====
     const noBtn = document.getElementById("noBtn");
     function moveNoButton() {
-      const padding = 14;
+      const pad = 14;
       const rect = noBtn.getBoundingClientRect();
-      const maxX = window.innerWidth - rect.width - padding;
-      const maxY = window.innerHeight - rect.height - padding;
-
-      const x = Math.max(padding, Math.random() * maxX);
-      const y = Math.max(padding, Math.random() * maxY);
-
+      const maxX = window.innerWidth - rect.width - pad;
+      const maxY = window.innerHeight - rect.height - pad;
+      const x = Math.max(pad, Math.random()*maxX);
+      const y = Math.max(pad, Math.random()*maxY);
       noBtn.style.position = "fixed";
       noBtn.style.left = x + "px";
       noBtn.style.top  = y + "px";
       noBtn.style.zIndex = 40;
     }
     noBtn.addEventListener("mouseenter", moveNoButton);
-    noBtn.addEventListener("touchstart", (e) => { e.preventDefault(); moveNoButton(); }, {passive:false});
+    noBtn.addEventListener("touchstart", (e)=>{ e.preventDefault(); moveNoButton(); }, {passive:false});
     noBtn.addEventListener("click", moveNoButton);
 
-    // ------- Confetti (canvas) -------
+    // ===== Confetti =====
     const canvas = document.getElementById("confetti");
     const ctx = canvas.getContext("2d");
     let confetti = [];
@@ -560,80 +573,98 @@
     resizeCanvas();
 
     function startConfetti(){
-      const count = 200;
       confetti = [];
-      for (let i=0;i<count;i++){
+      for(let i=0;i<190;i++){
         confetti.push({
           x: Math.random()*window.innerWidth,
-          y: -20 - Math.random()*window.innerHeight*0.4,
-          r: 4 + Math.random()*7,
-          vx: -2.2 + Math.random()*4.4,
-          vy: 2.2 + Math.random()*5.2,
+          y: -20 - Math.random()*window.innerHeight*0.35,
+          w: 4 + Math.random()*6,
+          h: 6 + Math.random()*10,
+          vx: -2 + Math.random()*4,
+          vy: 2 + Math.random()*5,
           rot: Math.random()*Math.PI,
-          vr: (-0.25 + Math.random()*0.5),
-          life: 150 + Math.random()*100
+          vr: (-0.22 + Math.random()*0.44),
+          life: 150 + Math.random()*90
         });
       }
-      if (raf) cancelAnimationFrame(raf);
+      if(raf) cancelAnimationFrame(raf);
       loop();
       setTimeout(() => {
-        if (raf) cancelAnimationFrame(raf);
-        raf=null;
+        if(raf) cancelAnimationFrame(raf);
+        raf = null;
         ctx.clearRect(0,0,window.innerWidth,window.innerHeight);
-      }, 3800);
+      }, 3600);
     }
 
     function loop(){
       ctx.clearRect(0,0,window.innerWidth,window.innerHeight);
-      for (const p of confetti){
+      for(const p of confetti){
         p.x += p.vx;
         p.y += p.vy;
         p.rot += p.vr;
-        p.vy *= 1.012;
+        p.vy *= 1.01;
         p.life -= 1;
 
         ctx.save();
         ctx.translate(p.x, p.y);
         ctx.rotate(p.rot);
-        ctx.globalAlpha = Math.max(0, Math.min(1, p.life/240));
+        ctx.globalAlpha = Math.max(0, Math.min(1, p.life/220));
         ctx.fillStyle = "rgba(255,255,255,.95)";
-        ctx.fillRect(-p.r/2, -p.r/2, p.r, p.r*1.5);
+        ctx.fillRect(-p.w/2, -p.h/2, p.w, p.h);
         ctx.restore();
       }
-      confetti = confetti.filter(p => p.life > 0 && p.y < window.innerHeight + 60);
+      confetti = confetti.filter(p => p.life>0 && p.y < window.innerHeight+50);
       raf = requestAnimationFrame(loop);
     }
 
-    // ------- YES action + modal message -------
+    // ===== Music (YouTube official embed) =====
+    const startMusicBtn = document.getElementById("startMusicBtn");
+    let ytPlayerReady = false;
+
+    // Load YouTube IFrame API
+    const tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/iframe_api";
+    document.head.appendChild(tag);
+
+    let player;
+    window.onYouTubeIframeAPIReady = () => {
+      player = new YT.Player('yt', {
+        events: {
+          onReady: () => { ytPlayerReady = true; }
+        }
+      });
+    };
+
+    function tryPlayMusic(){
+      // Must be called from a user gesture (tap/click) for most phones
+      if (ytPlayerReady && player && player.playVideo) {
+        player.setVolume(65);
+        player.playVideo();
+        startMusicBtn.textContent = "🎵 Playing";
+      } else {
+        startMusicBtn.textContent = "🎵 Tap again";
+      }
+    }
+
+    startMusicBtn.addEventListener("click", tryPlayMusic);
+
+    // ===== YES modal message =====
     const yesBtn = document.getElementById("yesBtn");
     const overlay = document.getElementById("overlay");
     const closeBtn = document.getElementById("closeBtn");
-    const fromName = document.getElementById("fromName");
-    const toName = document.getElementById("toName");
     const msgText = document.getElementById("msgText");
 
-    const loveMessage =
-`You are my beloved girlfriend 💕💕 but you are also my best friend 💑
-my love ♥️
-my heart 💗🤍
-my gift🎁
-my future♾️
-my motivation🤩
-my princess👑
-my home😍
-my safe place😘
-
-I love you so much and happy valentine day for you ma baby 🥰`;
-
     yesBtn.addEventListener("click", () => {
+      // start music too (best chance to autoplay after click)
+      tryPlayMusic();
+
       const r = yesBtn.getBoundingClientRect();
       heartBurst(r.left + r.width/2, r.top + r.height/2);
       startConfetti();
 
-      const from = (fromName.value || "Becher").trim();
-      const to   = (toName.value || "Denisa").trim();
-
-      msgText.textContent = `${to} 💗\n\n${loveMessage}\n\n— ${from}`;
+      msgText.textContent =
+`You are my beloved girlfriend 💕💕 but you are also my best friend 💑 my love ♥️my heart 💗🤍my gift🎁my future♾️my motivation🤩my princess👑my home😍my safe place😘
+I love you so much and happy valentine day for you ma baby 🥰`;
 
       overlay.classList.add("show");
       overlay.setAttribute("aria-hidden", "false");
@@ -646,10 +677,11 @@ I love you so much and happy valentine day for you ma baby 🥰`;
     });
 
     overlay.addEventListener("click", (e) => {
-      if (e.target === overlay) closeBtn.click();
+      if(e.target === overlay) closeBtn.click();
     });
   </script>
 </body>
 </html>
+
 
 
