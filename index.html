@@ -1,61 +1,410 @@
 <!doctype html>
-
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Denisa, will you be my Valentine? 💘</title>
+  <title>Denisa, be my Valentine? 💘</title>
   <style>
-    :root{--bg1:#ff4d6d;--bg2:#b5179e;--card:#ffffffee;--text:#1f1f1f;--yes:#22c55e;--no:#ef4444;--shadow:0 20px 60px rgba(0,0,0,.25);}*{box-sizing:border-box}html,body{height:100%}
-    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;overflow:hidden;background:radial-gradient(1200px 800px at 20% 20%,#ffd6e0 0%,transparent 60%),radial-gradient(900px 700px at 80% 30%,#ffe5f1 0%,transparent 55%),linear-gradient(135deg,var(--bg1),var(--bg2));}
-    .hearts{position:fixed;inset:0;pointer-events:none;overflow:hidden}
-    .heart{position:absolute;font-size:clamp(14px,2.2vw,26px);opacity:.85;animation:floatUp linear forwards;transform:translate(-50%,0)}
-    @keyframes floatUp{from{transform:translate(-50%,20px) scale(.9);opacity:0}10%{opacity:.9}to{transform:translate(-50%,-120vh) scale(1.2);opacity:0}}
-    .wrap{height:100%;display:grid;place-items:center;padding:24px}
-    .card{width:min(560px,96vw);background:var(--card);border-radius:28px;box-shadow:var(--shadow);padding:28px 22px;text-align:center}
-    .title{margin:16px 0 8px;font-size:clamp(28px,4.5vw,44px);font-weight:900}
-    .subtitle{margin:0 auto 18px;max-width:44ch;font-size:clamp(14px,2.2vw,18px);opacity:.85}
-    .names{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:10px 0 18px}
-    .pill{padding:10px 12px;border-radius:999px;background:#fff;border:1px solid rgba(0,0,0,.08);box-shadow:0 8px 18px rgba(0,0,0,.08);font-weight:700}
-    .pill input{border:none;outline:none;font:inherit;width:10.5ch;text-align:center;background:transparent}
-    .btnRow{position:relative;display:flex;justify-content:center;gap:14px;padding:10px 0 6px;min-height:64px}
-    button{border:none;cursor:pointer;font-weight:900;border-radius:16px;padding:14px 18px;font-size:16px;box-shadow:0 14px 28px rgba(0,0,0,.18)}
-    .yes{background:linear-gradient(135deg,#34d399,#22c55e);color:white}
-    .no{background:linear-gradient(135deg,#fb7185,#ef4444);color:white;position:relative}
-    .overlay{position:fixed;inset:0;display:none;place-items:center;background:rgba(0,0,0,.35);backdrop-filter:blur(6px);z-index:50;padding:22px}
+    :root{
+      --p1:#ff4d6d;
+      --p2:#b5179e;
+      --ink:#121318;
+      --card: rgba(255,255,255,.86);
+      --stroke: rgba(255,255,255,.42);
+      --shadow: 0 30px 80px rgba(0,0,0,.30);
+      --yes1:#34d399;
+      --yes2:#22c55e;
+      --no1:#fb7185;
+      --no2:#ef4444;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
+      color:var(--ink);
+      overflow:hidden;
+      background:
+        radial-gradient(1200px 900px at 20% 15%, rgba(255,214,224,.85) 0%, transparent 55%),
+        radial-gradient(900px 700px at 85% 20%, rgba(255,229,241,.75) 0%, transparent 58%),
+        linear-gradient(135deg, var(--p1), var(--p2));
+    }
+
+    /* “I LOVE U” background */
+    .love-bg{
+      position:fixed; inset:-40px;
+      pointer-events:none;
+      opacity:.26;
+      transform: rotate(-16deg);
+      filter: blur(.0px);
+      background-image:
+        repeating-linear-gradient(
+          0deg,
+          rgba(255,255,255,.00) 0px,
+          rgba(255,255,255,.00) 22px,
+          rgba(255,255,255,.10) 22px,
+          rgba(255,255,255,.10) 24px
+        );
+    }
+    .love-bg::before{
+      content:"I LOVE U  •  I LOVE U  •  I LOVE U  •  I LOVE U  •  I LOVE U  •  I LOVE U  •  I LOVE U  •  I LOVE U  •  I LOVE U  •  I LOVE U  •  I LOVE U  •  I LOVE U  •  I LOVE U  •  I LOVE U  •  I LOVE U  •  I LOVE U";
+      position:absolute; inset:0;
+      display:block;
+      white-space:pre;
+      font-weight:900;
+      letter-spacing:.38em;
+      line-height:2.2;
+      font-size: clamp(18px, 3.1vw, 34px);
+      color: rgba(255,255,255,.22);
+      text-transform:uppercase;
+      transform: translate3d(0,0,0);
+      background:
+        linear-gradient(90deg, rgba(255,255,255,.00), rgba(255,255,255,.25), rgba(255,255,255,.00));
+      -webkit-background-clip:text;
+      background-clip:text;
+      animation: drift 14s linear infinite;
+    }
+    @keyframes drift{
+      from{ transform: translateX(-8%) translateY(0); }
+      to  { transform: translateX(-32%) translateY(-8%); }
+    }
+
+    /* floating hearts */
+    .hearts{position:fixed; inset:0; pointer-events:none; overflow:hidden; filter: drop-shadow(0 10px 12px rgba(0,0,0,.18));}
+    .heart{position:absolute; transform:translate(-50%,0); opacity:.9; user-select:none; will-change: transform, opacity;}
+    @keyframes floatUp{
+      from{ transform:translate(-50%, 30px) scale(.9); opacity:0;}
+      12%{opacity:.9}
+      to{ transform:translate(-50%, -120vh) scale(1.25); opacity:0;}
+    }
+
+    /* layout */
+    .wrap{
+      height:100%;
+      display:grid;
+      place-items:center;
+      padding:24px;
+      position:relative;
+      z-index:2;
+    }
+    .shell{
+      width:min(680px, 96vw);
+      border-radius:34px;
+      background: linear-gradient(180deg, rgba(255,255,255,.20), rgba(255,255,255,.06));
+      border:1px solid rgba(255,255,255,.25);
+      box-shadow: 0 40px 120px rgba(0,0,0,.25);
+      padding:18px;
+      backdrop-filter: blur(10px);
+    }
+    .card{
+      border-radius:28px;
+      background: var(--card);
+      border:1px solid rgba(0,0,0,.06);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      position:relative;
+    }
+    .topGlow{
+      position:absolute; inset:-40% -10% auto -10%;
+      height:220px;
+      background: radial-gradient(closest-side, rgba(255,77,109,.38), transparent 70%);
+      pointer-events:none;
+    }
+    .content{
+      padding:26px 22px 22px;
+      text-align:center;
+      position:relative;
+    }
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:10px 14px;
+      border-radius:999px;
+      background: rgba(255, 77, 109, .12);
+      border: 1px solid rgba(255, 77, 109, .25);
+      font-weight:900;
+      letter-spacing:.3px;
+    }
+    .title{
+      margin:16px 0 8px;
+      font-size: clamp(30px, 4.8vw, 52px);
+      line-height:1.02;
+      font-weight:1000;
+    }
+    .subtitle{
+      margin:0 auto 18px;
+      max-width:52ch;
+      font-size: clamp(14px, 2.2vw, 18px);
+      opacity:.86;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap:14px;
+      margin-top:12px;
+    }
+    .row{
+      display:flex;
+      gap:10px;
+      justify-content:center;
+      flex-wrap:wrap;
+    }
+    .pill{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      padding:10px 12px;
+      border-radius:999px;
+      background:#fff;
+      border:1px solid rgba(0,0,0,.08);
+      box-shadow: 0 8px 18px rgba(0,0,0,.08);
+      font-weight:800;
+    }
+    .pill input{
+      border:none;
+      outline:none;
+      font: inherit;
+      width: 12ch;
+      text-align:center;
+      background:transparent;
+    }
+    .note{
+      margin: 4px auto 0;
+      font-size:12px;
+      opacity:.62;
+    }
+
+    .actions{
+      display:flex;
+      justify-content:center;
+      gap:14px;
+      margin-top:14px;
+      min-height:64px;
+      position:relative;
+    }
+    button{
+      border:none;
+      cursor:pointer;
+      font-weight:1000;
+      border-radius:18px;
+      padding:14px 18px;
+      font-size:16px;
+      transition: transform .12s ease, filter .12s ease;
+      box-shadow: 0 16px 32px rgba(0,0,0,.18);
+      user-select:none;
+    }
+    button:active{ transform: translateY(1px) scale(.99); }
+    .yes{
+      background: linear-gradient(135deg, var(--yes1), var(--yes2));
+      color:white;
+    }
+    .no{
+      background: linear-gradient(135deg, var(--no1), var(--no2));
+      color:white;
+      position:relative;
+    }
+    .yes:hover, .no:hover{ filter:brightness(1.02); transform: translateY(-1px); }
+
+    /* small footer */
+    .footer{
+      padding:14px 18px 18px;
+      display:flex;
+      justify-content:center;
+      gap:10px;
+      flex-wrap:wrap;
+      border-top:1px solid rgba(0,0,0,.06);
+      background: rgba(255,255,255,.55);
+      font-size:12px;
+      opacity:.75;
+    }
+
+    /* modal */
+    .overlay{
+      position:fixed; inset:0;
+      display:none;
+      place-items:center;
+      background: rgba(0,0,0,.38);
+      backdrop-filter: blur(8px);
+      z-index:50;
+      padding:22px;
+    }
     .overlay.show{display:grid}
-    .modal{width:min(560px,96vw);background:#fff;border-radius:28px;padding:26px 22px;text-align:center;box-shadow:var(--shadow)}
-    .big{font-size:clamp(30px,5vw,46px);font-weight:1000;margin:0 0 10px}
-    .msg{margin:0 auto 18px;max-width:48ch;opacity:.85;line-height:1.45}
-    .close{background:#111827;color:white;padding:12px 16px;border-radius:14px}
+    .modal{
+      width:min(680px, 96vw);
+      border-radius:28px;
+      background:#fff;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(0,0,0,.08);
+      padding:24px 22px;
+      text-align:center;
+      position:relative;
+      overflow:hidden;
+    }
+    .modal::before{
+      content:"";
+      position:absolute; inset:-60px -60px auto -60px;
+      height:220px;
+      background: radial-gradient(closest-side, rgba(181,23,158,.22), transparent 70%);
+      pointer-events:none;
+    }
+    .big{
+      font-size: clamp(30px, 5vw, 50px);
+      margin:0 0 10px;
+      font-weight:1000;
+    }
+    .msg{
+      margin:0 auto 16px;
+      max-width:52ch;
+      opacity:.86;
+      line-height:1.5;
+    }
+    .close{
+      background:#111827;
+      color:white;
+      padding:12px 16px;
+      border-radius:16px;
+    }
   </style>
 </head>
 <body>
-  <div class="hearts" id="hearts"></div>
+  <div class="love-bg" aria-hidden="true"></div>
+  <div class="hearts" id="hearts" aria-hidden="true"></div>
+
   <div class="wrap">
-    <div class="card">
-      <h1 class="title">Denisa, will you be my Valentine? 💘</h1>
-      <p class="subtitle">You are the best 💗 — distance means nothing when you mean everything.</p>
-      <div class="names">
-        <div class="pill">From: <input id="fromName" value="Becher" /></div>
-        <div class="pill">To: <input id="toName" value="Denisa" /></div>
-      </div>
-      <div class="btnRow">
-        <button class="yes" id="yesBtn">Yes! 💖</button>
-        <button class="no" id="noBtn">No 🙈</button>
+    <div class="shell">
+      <div class="card">
+        <div class="topGlow"></div>
+
+        <div class="content">
+          <div class="badge">💌 Becher → Denisa</div>
+
+          <h1 class="title">Denisa, will you be my Valentine? 💘</h1>
+          <p class="subtitle">
+            You are the best 💗 — and I made this little page just to ask you in a cute way.
+          </p>
+
+          <div class="grid">
+            <div class="row">
+              <div class="pill">From: <input id="fromName" value="Becher" /></div>
+              <div class="pill">To: <input id="toName" value="Denisa" /></div>
+            </div>
+            <div class="note">Tap anywhere for little hearts ✨</div>
+
+            <div class="actions" id="actions">
+              <button class="yes" id="yesBtn">Yes! 💖</button>
+              <button class="no" id="noBtn">No 🙈</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer">
+          <span>Made with ❤️</span>
+          <span>•</span>
+          <span>Distance can’t stop cute moments</span>
+        </div>
       </div>
     </div>
   </div>
-  <div class="overlay" id="overlay"><div class="modal"><h2 class="big">She said YES! 🥰💞</h2><p class="msg" id="msgText"></p><button class="close" id="closeBtn">Send me a kiss 😘</button></div></div>
-<script>
-const heartsLayer=document.getElementById('hearts');const yesBtn=document.getElementById('yesBtn');const noBtn=document.getElementById('noBtn');const overlay=document.getElementById('overlay');const closeBtn=document.getElementById('closeBtn');const fromName=document.getElementById('fromName');const toName=document.getElementById('toName');const msgText=document.getElementById('msgText');
-const heartChars=['💗','💖','💘','💝','💞','💕','❤️'];
-function spawnHeart(){const el=document.createElement('div');el.className='heart';el.textContent=heartChars[Math.floor(Math.random()*heartChars.length)];el.style.left=Math.random()*window.innerWidth+'px';el.style.top=window.innerHeight+30+'px';el.style.animationDuration=5+Math.random()*4+'s';heartsLayer.appendChild(el);setTimeout(()=>el.remove(),9000)}
-setInterval(spawnHeart,260);
-function moveNoButton(){const btnRect=noBtn.getBoundingClientRect();const x=Math.random()*(window.innerWidth-btnRect.width);const y=Math.random()*(window.innerHeight-btnRect.height);noBtn.style.position='fixed';noBtn.style.left=x+'px';noBtn.style.top=y+'px';}
-noBtn.addEventListener('mouseenter',moveNoButton);noBtn.addEventListener('click',moveNoButton);
-yesBtn.addEventListener('click',()=>{const from=fromName.value||'Becher';const to=toName.value||'Denisa';msgText.textContent=`${to}, you are the best 💗 — you just made ${from} the happiest guy alive. Happy Valentine's Day!`;overlay.classList.add('show');});
-closeBtn.addEventListener('click',()=>overlay.classList.remove('show'));
-</script>
+
+  <div class="overlay" id="overlay" aria-hidden="true">
+    <div class="modal">
+      <h2 class="big" id="bigText">YAAAY! 🥰💞</h2>
+      <p class="msg" id="msgText"></p>
+      <button class="close" id="closeBtn">Send me a kiss 😘</button>
+    </div>
+  </div>
+
+  <script>
+    const heartsLayer = document.getElementById("hearts");
+    const yesBtn = document.getElementById("yesBtn");
+    const noBtn  = document.getElementById("noBtn");
+    const overlay = document.getElementById("overlay");
+    const closeBtn = document.getElementById("closeBtn");
+    const fromName = document.getElementById("fromName");
+    const toName = document.getElementById("toName");
+    const msgText = document.getElementById("msgText");
+
+    const heartChars = ["💗","💖","💘","💝","💞","💕","❤️","🫶"];
+    function spawnHeart({x=null, y=null, big=false} = {}) {
+      const el = document.createElement("div");
+      el.className = "heart";
+      el.textContent = heartChars[Math.floor(Math.random() * heartChars.length)];
+
+      const left = x ?? (Math.random() * window.innerWidth);
+      const startY = y ?? (window.innerHeight + 30);
+
+      el.style.left = left + "px";
+      el.style.top  = startY + "px";
+      el.style.fontSize = big ? "34px" : "";
+      const dur = (big ? 3.8 : 5.4) + Math.random() * 3.2;
+      el.style.animation = `floatUp ${dur}s linear forwards`;
+      el.style.opacity = (0.55 + Math.random() * 0.4).toFixed(2);
+
+      heartsLayer.appendChild(el);
+      setTimeout(() => el.remove(), dur * 1000 + 250);
+    }
+
+    // Ambient hearts
+    setInterval(() => spawnHeart(), 220);
+
+    function heartBurst(cx, cy) {
+      for (let i = 0; i < 26; i++) {
+        setTimeout(() => {
+          const jx = cx + (Math.random() - 0.5) * 260;
+          const jy = cy + (Math.random() - 0.5) * 110;
+          spawnHeart({ x: jx, y: jy, big: Math.random() > 0.72 });
+        }, i * 16);
+      }
+    }
+
+    // playful "No" dodge
+    function moveNoButton() {
+      const padding = 14;
+      const rect = noBtn.getBoundingClientRect();
+      const maxX = window.innerWidth - rect.width - padding;
+      const maxY = window.innerHeight - rect.height - padding;
+
+      const x = Math.max(padding, Math.random() * maxX);
+      const y = Math.max(padding, Math.random() * maxY);
+
+      noBtn.style.position = "fixed";
+      noBtn.style.left = x + "px";
+      noBtn.style.top  = y + "px";
+      noBtn.style.zIndex = 40;
+    }
+    noBtn.addEventListener("mouseenter", moveNoButton);
+    noBtn.addEventListener("touchstart", (e) => { e.preventDefault(); moveNoButton(); }, {passive:false});
+    noBtn.addEventListener("click", moveNoButton);
+
+    yesBtn.addEventListener("click", () => {
+      const r = yesBtn.getBoundingClientRect();
+      heartBurst(r.left + r.width/2, r.top + r.height/2);
+
+      const from = (fromName.value || "Becher").trim();
+      const to   = (toName.value || "Denisa").trim();
+      msgText.textContent =
+        `${to}, you are the best 💗. ` +
+        `You just made ${from} so happy — happy Valentine’s Day! 💘`;
+
+      overlay.classList.add("show");
+      overlay.setAttribute("aria-hidden", "false");
+    });
+
+    closeBtn.addEventListener("click", () => {
+      overlay.classList.remove("show");
+      overlay.setAttribute("aria-hidden", "true");
+      heartBurst(window.innerWidth/2, window.innerHeight/2);
+    });
+    overlay.addEventListener("click", (e) => { if (e.target === overlay) closeBtn.click(); });
+
+    // Tap anywhere for hearts
+    window.addEventListener("click", (e) => {
+      if (!overlay.classList.contains("show")) {
+        spawnHeart({ x: e.clientX, y: e.clientY, big: Math.random() > 0.8 });
+      }
+    }, {capture:true});
+  </script>
 </body>
 </html>
