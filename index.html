@@ -3,95 +3,94 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Denisa, be my Valentine? 💘</title>
+  <title>Denisa, will you be my Valentine? 💘</title>
   <meta name="theme-color" content="#ff4d6d" />
   <style>
     :root{
       --bg1:#ff4d6d;
       --bg2:#b5179e;
-      --bg3:#7c3aed;
+      --bg3:#6d28d9;
 
       --ink:#0b1020;
       --muted: rgba(11,16,32,.72);
 
-      --glass: rgba(255,255,255,.80);
-      --glass2: rgba(255,255,255,.62);
-      --stroke: rgba(255,255,255,.40);
+      --glass: rgba(255,255,255,.78);
+      --glass2: rgba(255,255,255,.58);
+      --stroke: rgba(255,255,255,.42);
 
-      --shadow: 0 30px 90px rgba(0,0,0,.28);
-      --shadow2: 0 18px 42px rgba(0,0,0,.18);
+      --shadow: 0 28px 90px rgba(0,0,0,.28);
+      --shadow2: 0 16px 44px rgba(0,0,0,.18);
 
       --yes1:#34d399; --yes2:#22c55e;
       --no1:#fb7185;  --no2:#ef4444;
 
-      --radius: 28px;
-      --radius2: 34px;
+      --r1: 28px;
+      --r2: 34px;
     }
 
-    *{box-sizing:border-box}
-    html,body{height:100%}
+    *{ box-sizing:border-box }
+    html,body{ height:100% }
     body{
       margin:0;
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
-      color:var(--ink);
+      color: var(--ink);
       overflow:hidden;
       background:
         radial-gradient(1100px 800px at 15% 15%, rgba(255,214,224,.80) 0%, transparent 60%),
         radial-gradient(900px 700px at 85% 20%, rgba(255,229,241,.75) 0%, transparent 60%),
-        radial-gradient(900px 700px at 85% 85%, rgba(220,190,255,.30) 0%, transparent 58%),
+        radial-gradient(900px 700px at 85% 85%, rgba(220,190,255,.32) 0%, transparent 58%),
         linear-gradient(135deg, var(--bg1), var(--bg2) 55%, var(--bg3));
     }
 
-    /* BIG “I LOVE U SO MUCH” BACKGROUND */
+    /* BIG BACKGROUND: “I LOVE U SO MUCH” */
     .bg-love{
       position:fixed; inset:0;
       pointer-events:none;
       z-index:0;
       overflow:hidden;
     }
-    .bg-love .giant{
-      position:absolute;
-      left:50%; top:48%;
-      transform: translate(-50%,-50%) rotate(-12deg);
-      font-weight:1000;
-      letter-spacing:.08em;
-      text-transform:uppercase;
-      font-size: clamp(54px, 10.8vw, 130px);
-      line-height:1.02;
-      white-space:nowrap;
-      text-shadow: 0 18px 60px rgba(0,0,0,.12);
-      animation: sway 7s ease-in-out infinite;
-      user-select:none;
-    }
-    .bg-love .giant span{
-      background: linear-gradient(90deg, rgba(255,255,255,.12), rgba(255,255,255,.35), rgba(255,255,255,.12));
-      -webkit-background-clip:text; background-clip:text;
-      color: transparent;
-      opacity:.95;
-    }
     .bg-love .tile{
-      position:absolute; inset:-90px;
+      position:absolute; inset:-110px;
       transform: rotate(-14deg) scale(1.08);
       opacity:1;
       mix-blend-mode: overlay;
-      user-select:none;
     }
     .bg-love .tile::before{
       content:
-        "I LOVE U SO MUCH   I LOVE U SO MUCH   I LOVE U SO MUCH   I LOVE U SO MUCH   I LOVE U SO MUCH   I LOVE U SO MUCH   I LOVE U SO MUCH   I LOVE U SO MUCH   I LOVE U SO MUCH   I LOVE U SO MUCH";
+        "I LOVE U SO MUCH  •  I LOVE U SO MUCH  •  I LOVE U SO MUCH  •  I LOVE U SO MUCH  •  I LOVE U SO MUCH  •  I LOVE U SO MUCH  •  I LOVE U SO MUCH  •  I LOVE U SO MUCH  •  I LOVE U SO MUCH  •  I LOVE U SO MUCH";
       position:absolute; inset:0;
       white-space:pre;
       font-weight:1000;
       letter-spacing:.18em;
-      line-height:2.05;
-      font-size: clamp(18px, 3.3vw, 40px);
-      color: rgba(255,255,255,.42); /* strong visibility on phones */
+      line-height:1.9;
+      font-size: clamp(22px, 3.9vw, 50px);
+      color: rgba(255,255,255,.44); /* visible on phones */
       text-transform:uppercase;
-      animation: drift 10.5s linear infinite;
+      animation: drift 9.5s linear infinite;
+      filter: drop-shadow(0 14px 40px rgba(0,0,0,.10));
+    }
+    .bg-love .giant{
+      position:absolute;
+      left:50%; top:50%;
+      transform: translate(-50%,-50%) rotate(-12deg);
+      font-weight:1000;
+      letter-spacing:.06em;
+      text-transform:uppercase;
+      font-size: clamp(74px, 12.5vw, 170px);
+      white-space:nowrap;
+      line-height:1.0;
+      color: rgba(255,255,255,.18);
+      text-shadow: 0 18px 60px rgba(0,0,0,.14);
+      animation: sway 6.5s ease-in-out infinite;
+    }
+    .bg-love .giant span{
+      background: linear-gradient(90deg, rgba(255,255,255,.12), rgba(255,255,255,.34), rgba(255,255,255,.12));
+      -webkit-background-clip:text; background-clip:text;
+      color: transparent;
     }
     @keyframes drift{
       from{ transform: translate3d(0,0,0); }
-      to  { transform: translate3d(-18%, -10%, 0); }
+      to  { transform: translate3d(-20%, -12%, 0); }
     }
     @keyframes sway{
       0%,100%{ transform: translate(-50%,-50%) rotate(-12deg) translateY(0); }
@@ -100,10 +99,11 @@
 
     /* soft moving light */
     .bg-light{
-      position:fixed; inset:-40%;
-      z-index:0; pointer-events:none;
+      position:fixed; inset:-45%;
+      z-index:0;
+      pointer-events:none;
       background: radial-gradient(closest-side, rgba(255,255,255,.22), transparent 70%);
-      filter: blur(10px);
+      filter: blur(12px);
       animation: lightMove 9s ease-in-out infinite;
       mix-blend-mode: soft-light;
     }
@@ -147,14 +147,14 @@
     .frame{
       width:min(820px, 96vw);
       padding:16px;
-      border-radius: var(--radius2);
+      border-radius: var(--r2);
       background: linear-gradient(180deg, rgba(255,255,255,.18), rgba(255,255,255,.06));
       border:1px solid rgba(255,255,255,.22);
       backdrop-filter: blur(12px);
       box-shadow: 0 40px 140px rgba(0,0,0,.20);
     }
     .card{
-      border-radius: var(--radius);
+      border-radius: var(--r1);
       background: var(--glass);
       border:1px solid rgba(0,0,0,.06);
       box-shadow: var(--shadow);
@@ -166,18 +166,17 @@
       position:absolute;
       inset:-60% -30% auto -30%;
       height:340px;
-      background: radial-gradient(closest-side, rgba(255,77,109,.40), transparent 70%);
+      background: radial-gradient(closest-side, rgba(255,77,109,.42), transparent 70%);
       pointer-events:none;
       z-index:-1;
     }
 
     .header{
-      padding:22px 22px 6px;
+      padding:22px 22px 8px;
       display:flex;
-      align-items:center;
       justify-content:space-between;
-      gap:12px;
-      flex-wrap:wrap;
+      align-items:center;
+      gap:10px;
     }
     .badge{
       display:inline-flex;
@@ -189,26 +188,24 @@
       border: 1px solid rgba(255, 77, 109, .25);
       font-weight:1000;
       letter-spacing:.2px;
-    }
-    .miniControls{
-      display:flex; gap:10px; align-items:center; flex-wrap:wrap;
-      justify-content:flex-end;
+      white-space:nowrap;
     }
     .chip{
       display:inline-flex;
-      gap:8px;
       align-items:center;
+      gap:8px;
       padding:10px 12px;
       border-radius:999px;
-      background: rgba(255,255,255,.60);
-      border:1px solid rgba(0,0,0,.06);
-      box-shadow: 0 10px 22px rgba(0,0,0,.10);
+      background: rgba(255,255,255,.75);
+      border:1px solid rgba(0,0,0,.08);
+      box-shadow: 0 10px 20px rgba(0,0,0,.08);
       font-weight:900;
-      font-size:12px;
-      user-select:none;
       cursor:pointer;
+      user-select:none;
+      transition: transform .12s ease, filter .12s ease;
     }
-    .chip:active{ transform: translateY(1px); }
+    .chip:active{ transform: translateY(1px) scale(.99); }
+    .chip:hover{ filter:brightness(1.02); transform: translateY(-1px); }
 
     .content{
       padding: 0 22px 18px;
@@ -222,20 +219,27 @@
       letter-spacing:-.02em;
     }
     .subtitle{
-      margin:0 auto 14px;
+      margin:0 auto 16px;
       max-width:62ch;
       font-size: clamp(14px, 2.2vw, 18px);
-      opacity:.88;
+      opacity:.90;
       color: var(--muted);
-      line-height:1.5;
+      line-height:1.55;
     }
+    .type{
+      display:inline-block;
+      border-right: 2px solid rgba(11,16,32,.35);
+      padding-right:6px;
+      animation: caret 1.0s steps(1) infinite;
+    }
+    @keyframes caret{ 50%{ border-right-color: transparent; } }
 
     .inputs{
       display:flex;
       gap:12px;
       justify-content:center;
       flex-wrap:wrap;
-      margin-top:10px;
+      margin-top:12px;
     }
     .pill{
       display:flex;
@@ -246,15 +250,15 @@
       background:#fff;
       border:1px solid rgba(0,0,0,.08);
       box-shadow: 0 8px 18px rgba(0,0,0,.08);
-      font-weight:1000;
-      min-width: 260px;
+      font-weight:900;
+      min-width: 250px;
       justify-content:space-between;
     }
     .pill label{ opacity:.65; font-weight:1000; }
     .pill input{
       border:none; outline:none;
       font: inherit;
-      width: 14ch;
+      width: 12ch;
       text-align:right;
       background:transparent;
     }
@@ -270,7 +274,7 @@
       justify-content:center;
       gap:14px;
       margin:18px 0 8px;
-      min-height:76px;
+      min-height:74px;
       position:relative;
     }
     button{
@@ -342,7 +346,7 @@
       background:#fff;
       box-shadow: var(--shadow);
       border: 1px solid rgba(0,0,0,.08);
-      padding: 22px 18px;
+      padding: 24px 22px;
       text-align:center;
       position:relative;
       overflow:hidden;
@@ -350,37 +354,24 @@
     .modal::before{
       content:"";
       position:absolute; inset:-70px -70px auto -70px;
-      height:260px;
+      height:280px;
       background: radial-gradient(closest-side, rgba(181,23,158,.22), transparent 70%);
       pointer-events:none;
     }
     .big{
-      font-size: clamp(26px, 4.4vw, 44px);
+      font-size: clamp(28px, 4.4vw, 52px);
       margin:0 0 10px;
       font-weight:1000;
       letter-spacing:-.02em;
     }
     .msg{
-      margin:0 auto 14px;
-      max-width:62ch;
+      margin:0 auto 16px;
+      max-width:70ch;
       opacity:.92;
       line-height:1.6;
-      color: rgba(11,16,32,.82);
+      color: rgba(11,16,32,.84);
       font-size: clamp(14px, 2.2vw, 18px);
-      white-space: pre-wrap;
-      text-align:left;
-      background: rgba(255,255,255,.70);
-      border: 1px solid rgba(0,0,0,.06);
-      border-radius: 18px;
-      padding: 14px 14px;
-      box-shadow: 0 10px 22px rgba(0,0,0,.10);
-    }
-    .modalActions{
-      display:flex;
-      justify-content:center;
-      gap:10px;
-      flex-wrap:wrap;
-      margin-top:14px;
+      white-space: pre-line;
     }
     .close{
       background:#111827;
@@ -396,55 +387,19 @@
       z-index:60;
     }
 
-    /* Music gate overlay (for autoplay restrictions) */
-    .musicGate{
-      position:fixed; inset:0;
-      display:none;
-      place-items:center;
-      z-index:80;
-      background: rgba(0,0,0,.38);
-      backdrop-filter: blur(10px);
-      padding:22px;
-    }
-    .musicGate.show{ display:grid; }
-    .gateCard{
-      width:min(560px, 96vw);
-      border-radius: 28px;
-      background: rgba(255,255,255,.92);
-      border: 1px solid rgba(0,0,0,.08);
-      box-shadow: var(--shadow);
-      padding: 18px 16px;
-      text-align:center;
-    }
-    .gateTitle{
-      font-size: 22px;
-      font-weight:1000;
-      margin: 4px 0 6px;
-    }
-    .gateText{
-      margin:0 auto 14px;
-      max-width:46ch;
-      opacity:.84;
-      line-height:1.45;
-    }
-    .gateBtn{
-      background: linear-gradient(135deg, #60a5fa, #a78bfa);
-      color:white;
-      border-radius: 18px;
-      padding: 14px 16px;
-      font-weight:1000;
-      box-shadow: var(--shadow2);
-      border:none;
-      cursor:pointer;
-      width:min(320px, 90%);
+    /* hidden youtube player */
+    .yt-holder{
+      position:fixed;
+      width:1px; height:1px;
+      left:-9999px; top:-9999px;
+      overflow:hidden;
     }
 
     @media (max-width:420px){
       .pill{ min-width: 92%; }
       .actions{ gap:10px; }
       button{ padding:14px 16px; }
-      .miniControls{ width:100%; justify-content:center; }
-      .msg{ text-align:left; }
+      .header{ flex-direction:column; }
     }
   </style>
 </head>
@@ -458,18 +413,19 @@
   <div class="hearts" id="hearts" aria-hidden="true"></div>
   <canvas id="confetti" width="0" height="0" aria-hidden="true"></canvas>
 
-  <!-- Music gate (only shows if autoplay is blocked) -->
-  <div class="musicGate" id="musicGate" aria-hidden="true">
-    <div class="gateCard">
-      <div class="gateTitle">Tap to start the song 🎵</div>
-      <p class="gateText">
-        Phones block auto-play with sound. Tap once and the music will play.
-      </p>
-      <button class="gateBtn" id="startMusicBtn">Start music 💞</button>
-      <div style="margin-top:10px;font-size:12px;opacity:.72">
-        (You need to upload <b>perfect.mp3</b> to the repo for the song to work.)
-      </div>
-    </div>
+  <!-- Official YouTube embed holder (music). Autoplay w/ sound needs a user tap. -->
+  <div class="yt-holder" aria-hidden="true">
+    <!-- NOTE: This is Ed Sheeran - Perfect official video on YouTube.
+         If YouTube changes, replace the VIDEO_ID below. -->
+    <iframe
+      id="yt"
+      width="560" height="315"
+      src="https://www.youtube.com/embed/2Vv-BfVoq4g?enablejsapi=1&playsinline=1&rel=0"
+      title="YouTube player"
+      frameborder="0"
+      allow="autoplay; encrypted-media"
+      allowfullscreen>
+    </iframe>
   </div>
 
   <div class="wrap">
@@ -479,16 +435,14 @@
 
         <div class="header">
           <div class="badge">💌 Becher → Denisa</div>
-          <div class="miniControls">
-            <div class="chip" id="toggleMusicChip">🎵 Music: <span id="musicState">ON</span></div>
-            <div class="chip" id="replayChip">✨ Replay</div>
-          </div>
+          <div class="chip" id="startMusicBtn">🎵 Start song</div>
         </div>
 
         <div class="content">
           <h1 class="title">Denisa, will you be my Valentine? 💘</h1>
+
           <p class="subtitle">
-            You are the best 💗 — I made this just for you. Tap anywhere for hearts ✨
+            <span class="type" id="typeText"></span>
           </p>
 
           <div class="inputs">
@@ -502,7 +456,7 @@
             </div>
           </div>
 
-          <div class="hint">Try pressing “No” 😄</div>
+          <div class="hint">Tip: tap “Start song” (phones block autoplay until you tap once) 💗</div>
 
           <div class="actions">
             <button class="yes" id="yesBtn">Yes! 💖</button>
@@ -511,7 +465,7 @@
         </div>
 
         <div class="footer">
-          <span>Made with ❤️</span><span>•</span><span>Happy Valentine’s Day</span>
+          <span>Made with ❤️</span><span>•</span><span>Distance can’t stop cute moments</span>
         </div>
       </div>
     </div>
@@ -519,23 +473,39 @@
 
   <div class="overlay" id="overlay" aria-hidden="true">
     <div class="modal">
-      <h2 class="big">She said YES! 🥰💞</h2>
-      <div class="msg" id="msgText"></div>
-      <div class="modalActions">
-        <button class="close" id="closeBtn">Send me a kiss 😘</button>
-      </div>
+      <h2 class="big">YAAAY! 🥰💞</h2>
+      <p class="msg" id="msgText"></p>
+      <button class="close" id="closeBtn">Close 💗</button>
     </div>
   </div>
 
-  <!-- Audio: you must upload perfect.mp3 into the same repo folder -->
-  <audio id="song" preload="auto" loop>
-    <source src="perfect.mp3" type="audio/mpeg">
-  </audio>
-
   <script>
-    // ---------- Hearts ----------
+    // ===== Typewriter =====
+    const typeEl = document.getElementById("typeText");
+    const typeLines = [
+      "I built this page just for you 💗",
+      "Because you are the best… always.",
+      "Press “Yes” if you accept my Valentine invite 💘"
+    ];
+    let line = 0, i = 0, del = false;
+    function tick(){
+      const s = typeLines[line];
+      if(!del){
+        i++;
+        typeEl.textContent = s.slice(0,i);
+        if(i >= s.length){ del = true; setTimeout(tick, 1100); return; }
+      }else{
+        i--;
+        typeEl.textContent = s.slice(0,i);
+        if(i <= 0){ del = false; line = (line+1)%typeLines.length; }
+      }
+      setTimeout(tick, del ? 26 : 38);
+    }
+    tick();
+
+    // ===== Hearts =====
     const heartsLayer = document.getElementById("hearts");
-    const heartChars = ["💗","💖","💘","💝","💞","💕","❤️","🫶","🤍"];
+    const heartChars = ["💗","💖","💘","💝","💞","💕","❤️","🫶"];
     function spawnHeart({x=null, y=null, big=false} = {}) {
       const el = document.createElement("div");
       el.className = "heart";
@@ -544,49 +514,49 @@
       const startY = y ?? (window.innerHeight + 30);
       el.style.left = left + "px";
       el.style.top  = startY + "px";
-      el.style.fontSize = big ? "34px" : "";
-      const dur = (big ? 3.7 : 5.1) + Math.random() * 3.0;
+      el.style.fontSize = big ? "36px" : "";
+      const dur = (big ? 3.6 : 5.0) + Math.random() * 3.0;
       el.style.animationDuration = dur + "s";
-      el.style.opacity = (0.55 + Math.random() * 0.4).toFixed(2);
+      el.style.opacity = (0.55 + Math.random()*0.4).toFixed(2);
       heartsLayer.appendChild(el);
-      setTimeout(() => el.remove(), dur * 1000 + 250);
+      setTimeout(() => el.remove(), dur*1000 + 250);
     }
     setInterval(() => spawnHeart(), 220);
 
     function heartBurst(cx, cy) {
-      for (let k = 0; k < 34; k++) {
-        setTimeout(() => {
-          const jx = cx + (Math.random() - 0.5) * 340;
-          const jy = cy + (Math.random() - 0.5) * 150;
-          spawnHeart({ x: jx, y: jy, big: Math.random() > 0.70 });
-        }, k * 12);
+      for (let k=0;k<32;k++){
+        setTimeout(()=>{
+          const jx = cx + (Math.random()-0.5)*340;
+          const jy = cy + (Math.random()-0.5)*150;
+          spawnHeart({x:jx, y:jy, big: Math.random()>0.72});
+        }, k*14);
       }
     }
 
     window.addEventListener("click", (e) => {
       const overlayOpen = document.getElementById("overlay").classList.contains("show");
-      if (!overlayOpen) spawnHeart({ x: e.clientX, y: e.clientY, big: Math.random() > 0.82 });
+      if (!overlayOpen) spawnHeart({ x:e.clientX, y:e.clientY, big: Math.random()>0.84 });
     }, {capture:true});
 
-    // ---------- No button dodge ----------
+    // ===== No button dodge =====
     const noBtn = document.getElementById("noBtn");
     function moveNoButton() {
-      const padding = 14;
+      const pad = 14;
       const rect = noBtn.getBoundingClientRect();
-      const maxX = window.innerWidth - rect.width - padding;
-      const maxY = window.innerHeight - rect.height - padding;
-      const x = Math.max(padding, Math.random() * maxX);
-      const y = Math.max(padding, Math.random() * maxY);
+      const maxX = window.innerWidth - rect.width - pad;
+      const maxY = window.innerHeight - rect.height - pad;
+      const x = Math.max(pad, Math.random()*maxX);
+      const y = Math.max(pad, Math.random()*maxY);
       noBtn.style.position = "fixed";
       noBtn.style.left = x + "px";
       noBtn.style.top  = y + "px";
       noBtn.style.zIndex = 40;
     }
     noBtn.addEventListener("mouseenter", moveNoButton);
-    noBtn.addEventListener("touchstart", (e) => { e.preventDefault(); moveNoButton(); }, {passive:false});
+    noBtn.addEventListener("touchstart", (e)=>{ e.preventDefault(); moveNoButton(); }, {passive:false});
     noBtn.addEventListener("click", moveNoButton);
 
-    // ---------- Confetti (canvas) ----------
+    // ===== Confetti =====
     const canvas = document.getElementById("confetti");
     const ctx = canvas.getContext("2d");
     let confetti = [];
@@ -603,32 +573,32 @@
     resizeCanvas();
 
     function startConfetti(){
-      const count = 200;
       confetti = [];
-      for (let i=0;i<count;i++){
+      for(let i=0;i<190;i++){
         confetti.push({
           x: Math.random()*window.innerWidth,
-          y: -20 - Math.random()*window.innerHeight*0.4,
-          r: 4 + Math.random()*6,
+          y: -20 - Math.random()*window.innerHeight*0.35,
+          w: 4 + Math.random()*6,
+          h: 6 + Math.random()*10,
           vx: -2 + Math.random()*4,
           vy: 2 + Math.random()*5,
           rot: Math.random()*Math.PI,
-          vr: (-0.2 + Math.random()*0.4),
-          life: 160 + Math.random()*90
+          vr: (-0.22 + Math.random()*0.44),
+          life: 150 + Math.random()*90
         });
       }
-      if (raf) cancelAnimationFrame(raf);
+      if(raf) cancelAnimationFrame(raf);
       loop();
       setTimeout(() => {
-        if (raf) cancelAnimationFrame(raf);
-        raf=null;
+        if(raf) cancelAnimationFrame(raf);
+        raf = null;
         ctx.clearRect(0,0,window.innerWidth,window.innerHeight);
       }, 3600);
     }
 
     function loop(){
       ctx.clearRect(0,0,window.innerWidth,window.innerHeight);
-      for (const p of confetti){
+      for(const p of confetti){
         p.x += p.vx;
         p.y += p.vy;
         p.rot += p.vr;
@@ -638,124 +608,81 @@
         ctx.save();
         ctx.translate(p.x, p.y);
         ctx.rotate(p.rot);
-        ctx.globalAlpha = Math.max(0, Math.min(1, p.life/240));
+        ctx.globalAlpha = Math.max(0, Math.min(1, p.life/220));
         ctx.fillStyle = "rgba(255,255,255,.95)";
-        ctx.fillRect(-p.r/2, -p.r/2, p.r, p.r*1.4);
+        ctx.fillRect(-p.w/2, -p.h/2, p.w, p.h);
         ctx.restore();
       }
-      confetti = confetti.filter(p => p.life > 0 && p.y < window.innerHeight + 60);
+      confetti = confetti.filter(p => p.life>0 && p.y < window.innerHeight+50);
       raf = requestAnimationFrame(loop);
     }
 
-    // ---------- Music ----------
-    const song = document.getElementById("song");
-    const gate = document.getElementById("musicGate");
+    // ===== Music (YouTube official embed) =====
     const startMusicBtn = document.getElementById("startMusicBtn");
-    const toggleMusicChip = document.getElementById("toggleMusicChip");
-    const musicState = document.getElementById("musicState");
+    let ytPlayerReady = false;
 
-    let musicEnabled = true;
+    // Load YouTube IFrame API
+    const tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/iframe_api";
+    document.head.appendChild(tag);
 
-    async function tryPlayMusic() {
-      if (!musicEnabled) return;
-      try {
-        // Try to play (may be blocked by browser)
-        await song.play();
-        gate.classList.remove("show");
-        gate.setAttribute("aria-hidden","true");
-        musicState.textContent = "ON";
-      } catch (e) {
-        // If blocked, show gate to require one tap
-        gate.classList.add("show");
-        gate.setAttribute("aria-hidden","false");
-        musicState.textContent = "ON";
+    let player;
+    window.onYouTubeIframeAPIReady = () => {
+      player = new YT.Player('yt', {
+        events: {
+          onReady: () => { ytPlayerReady = true; }
+        }
+      });
+    };
+
+    function tryPlayMusic(){
+      // Must be called from a user gesture (tap/click) for most phones
+      if (ytPlayerReady && player && player.playVideo) {
+        player.setVolume(65);
+        player.playVideo();
+        startMusicBtn.textContent = "🎵 Playing";
+      } else {
+        startMusicBtn.textContent = "🎵 Tap again";
       }
     }
 
-    startMusicBtn.addEventListener("click", async () => {
-      try{
-        await song.play();
-        gate.classList.remove("show");
-        gate.setAttribute("aria-hidden","true");
-      } catch(e){
-        // If file is missing, it will still fail. That's ok.
-        alert("Song file not found. Upload perfect.mp3 to your GitHub repo first.");
-      }
-    });
+    startMusicBtn.addEventListener("click", tryPlayMusic);
 
-    toggleMusicChip.addEventListener("click", () => {
-      musicEnabled = !musicEnabled;
-      if (!musicEnabled){
-        song.pause();
-        musicState.textContent = "OFF";
-        gate.classList.remove("show");
-      } else {
-        musicState.textContent = "ON";
-        tryPlayMusic();
-      }
-    });
-
-    // Attempt autoplay on load (will work on some devices, blocked on others)
-    window.addEventListener("load", () => {
-      tryPlayMusic();
-    });
-
-    // Also try on first user interaction (helps mobile)
-    window.addEventListener("pointerdown", () => {
-      if (musicEnabled && song.paused) tryPlayMusic();
-    }, {once:false});
-
-    // ---------- YES modal ----------
+    // ===== YES modal message =====
     const yesBtn = document.getElementById("yesBtn");
     const overlay = document.getElementById("overlay");
     const closeBtn = document.getElementById("closeBtn");
-    const fromName = document.getElementById("fromName");
-    const toName = document.getElementById("toName");
     const msgText = document.getElementById("msgText");
 
-    const LOVE_MESSAGE =
-`You are  my beloved girlfriend 💕💕 but you are also my best friend 💑 my love ♥️my heart 💗🤍my gift🎁my future♾️my motivation🤩my princess👑my home😍my safe place😘
-
-I love you so much and happy valentine day for you ma baby 🥰`;
-
     yesBtn.addEventListener("click", () => {
+      // start music too (best chance to autoplay after click)
+      tryPlayMusic();
+
       const r = yesBtn.getBoundingClientRect();
       heartBurst(r.left + r.width/2, r.top + r.height/2);
       startConfetti();
 
-      // personalize header line
-      const from = (fromName.value || "Becher").trim();
-      const to   = (toName.value || "Denisa").trim();
-      const headerLine = `${to} 💗 — from ${from}\n\n`;
-
-      msgText.textContent = headerLine + LOVE_MESSAGE;
+      msgText.textContent =
+`You are my beloved girlfriend 💕💕 but you are also my best friend 💑 my love ♥️my heart 💗🤍my gift🎁my future♾️my motivation🤩my princess👑my home😍my safe place😘
+I love you so much and happy valentine day for you ma baby 🥰`;
 
       overlay.classList.add("show");
-      overlay.setAttribute("aria-hidden","false");
-
-      // try again to start music (if blocked before)
-      tryPlayMusic();
+      overlay.setAttribute("aria-hidden", "false");
     });
 
     closeBtn.addEventListener("click", () => {
       overlay.classList.remove("show");
-      overlay.setAttribute("aria-hidden","true");
+      overlay.setAttribute("aria-hidden", "true");
       heartBurst(window.innerWidth/2, window.innerHeight/2);
     });
 
     overlay.addEventListener("click", (e) => {
-      if (e.target === overlay) closeBtn.click();
-    });
-
-    // Replay chip
-    document.getElementById("replayChip").addEventListener("click", () => {
-      heartBurst(window.innerWidth/2, window.innerHeight/2);
-      startConfetti();
-      if (musicEnabled) tryPlayMusic();
+      if(e.target === overlay) closeBtn.click();
     });
   </script>
 </body>
 </html>
+
 
 
 
