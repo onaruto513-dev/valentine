@@ -1,0 +1,61 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Denisa, will you be my Valentine? 💘</title>
+  <style>
+    :root{--bg1:#ff4d6d;--bg2:#b5179e;--card:#ffffffee;--text:#1f1f1f;--yes:#22c55e;--no:#ef4444;--shadow:0 20px 60px rgba(0,0,0,.25);}*{box-sizing:border-box}html,body{height:100%}
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;overflow:hidden;background:radial-gradient(1200px 800px at 20% 20%,#ffd6e0 0%,transparent 60%),radial-gradient(900px 700px at 80% 30%,#ffe5f1 0%,transparent 55%),linear-gradient(135deg,var(--bg1),var(--bg2));}
+    .hearts{position:fixed;inset:0;pointer-events:none;overflow:hidden}
+    .heart{position:absolute;font-size:clamp(14px,2.2vw,26px);opacity:.85;animation:floatUp linear forwards;transform:translate(-50%,0)}
+    @keyframes floatUp{from{transform:translate(-50%,20px) scale(.9);opacity:0}10%{opacity:.9}to{transform:translate(-50%,-120vh) scale(1.2);opacity:0}}
+    .wrap{height:100%;display:grid;place-items:center;padding:24px}
+    .card{width:min(560px,96vw);background:var(--card);border-radius:28px;box-shadow:var(--shadow);padding:28px 22px;text-align:center}
+    .title{margin:16px 0 8px;font-size:clamp(28px,4.5vw,44px);font-weight:900}
+    .subtitle{margin:0 auto 18px;max-width:44ch;font-size:clamp(14px,2.2vw,18px);opacity:.85}
+    .names{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:10px 0 18px}
+    .pill{padding:10px 12px;border-radius:999px;background:#fff;border:1px solid rgba(0,0,0,.08);box-shadow:0 8px 18px rgba(0,0,0,.08);font-weight:700}
+    .pill input{border:none;outline:none;font:inherit;width:10.5ch;text-align:center;background:transparent}
+    .btnRow{position:relative;display:flex;justify-content:center;gap:14px;padding:10px 0 6px;min-height:64px}
+    button{border:none;cursor:pointer;font-weight:900;border-radius:16px;padding:14px 18px;font-size:16px;box-shadow:0 14px 28px rgba(0,0,0,.18)}
+    .yes{background:linear-gradient(135deg,#34d399,#22c55e);color:white}
+    .no{background:linear-gradient(135deg,#fb7185,#ef4444);color:white;position:relative}
+    .overlay{position:fixed;inset:0;display:none;place-items:center;background:rgba(0,0,0,.35);backdrop-filter:blur(6px);z-index:50;padding:22px}
+    .overlay.show{display:grid}
+    .modal{width:min(560px,96vw);background:#fff;border-radius:28px;padding:26px 22px;text-align:center;box-shadow:var(--shadow)}
+    .big{font-size:clamp(30px,5vw,46px);font-weight:1000;margin:0 0 10px}
+    .msg{margin:0 auto 18px;max-width:48ch;opacity:.85;line-height:1.45}
+    .close{background:#111827;color:white;padding:12px 16px;border-radius:14px}
+  </style>
+</head>
+<body>
+  <div class="hearts" id="hearts"></div>
+  <div class="wrap">
+    <div class="card">
+      <h1 class="title">Denisa, will you be my Valentine? 💘</h1>
+      <p class="subtitle">You are the best 💗 — distance means nothing when you mean everything.</p>
+      <div class="names">
+        <div class="pill">From: <input id="fromName" value="Becher" /></div>
+        <div class="pill">To: <input id="toName" value="Denisa" /></div>
+      </div>
+      <div class="btnRow">
+        <button class="yes" id="yesBtn">Yes! 💖</button>
+        <button class="no" id="noBtn">No 🙈</button>
+      </div>
+    </div>
+  </div>
+  <div class="overlay" id="overlay"><div class="modal"><h2 class="big">She said YES! 🥰💞</h2><p class="msg" id="msgText"></p><button class="close" id="closeBtn">Send me a kiss 😘</button></div></div>
+<script>
+const heartsLayer=document.getElementById('hearts');const yesBtn=document.getElementById('yesBtn');const noBtn=document.getElementById('noBtn');const overlay=document.getElementById('overlay');const closeBtn=document.getElementById('closeBtn');const fromName=document.getElementById('fromName');const toName=document.getElementById('toName');const msgText=document.getElementById('msgText');
+const heartChars=['💗','💖','💘','💝','💞','💕','❤️'];
+function spawnHeart(){const el=document.createElement('div');el.className='heart';el.textContent=heartChars[Math.floor(Math.random()*heartChars.length)];el.style.left=Math.random()*window.innerWidth+'px';el.style.top=window.innerHeight+30+'px';el.style.animationDuration=5+Math.random()*4+'s';heartsLayer.appendChild(el);setTimeout(()=>el.remove(),9000)}
+setInterval(spawnHeart,260);
+function moveNoButton(){const btnRect=noBtn.getBoundingClientRect();const x=Math.random()*(window.innerWidth-btnRect.width);const y=Math.random()*(window.innerHeight-btnRect.height);noBtn.style.position='fixed';noBtn.style.left=x+'px';noBtn.style.top=y+'px';}
+noBtn.addEventListener('mouseenter',moveNoButton);noBtn.addEventListener('click',moveNoButton);
+yesBtn.addEventListener('click',()=>{const from=fromName.value||'Becher';const to=toName.value||'Denisa';msgText.textContent=`${to}, you are the best 💗 — you just made ${from} the happiest guy alive. Happy Valentine's Day!`;overlay.classList.add('show');});
+closeBtn.addEventListener('click',()=>overlay.classList.remove('show'));
+</script>
+</body>
+</html>
