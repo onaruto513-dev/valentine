@@ -3,124 +3,122 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Denisa, be my Valentine? 💘</title>
+  <title>Denisa, will you be my Valentine? 💘</title>
   <meta name="theme-color" content="#ff4d6d" />
   <style>
     :root{
-      --a:#ff4d6d;
-      --b:#b5179e;
-      --c:#7c3aed;
+      --pink:#ff4d6d;
+      --magenta:#b5179e;
+      --violet:#7c3aed;
 
       --ink:#0b1020;
-      --muted: rgba(11,16,32,.74);
+      --muted: rgba(11,16,32,.72);
 
       --glass: rgba(255,255,255,.80);
-      --glass2: rgba(255,255,255,.55);
-      --stroke: rgba(255,255,255,.35);
+      --glass2: rgba(255,255,255,.62);
+      --stroke: rgba(255,255,255,.42);
 
-      --shadow: 0 30px 90px rgba(0,0,0,.28);
-      --shadow2: 0 16px 40px rgba(0,0,0,.18);
+      --shadow: 0 34px 120px rgba(0,0,0,.28);
+      --shadow2: 0 18px 44px rgba(0,0,0,.18);
 
       --yes1:#34d399; --yes2:#22c55e;
       --no1:#fb7185;  --no2:#ef4444;
 
-      --r1: 30px;
+      --r1: 28px;
       --r2: 36px;
     }
 
-    *{box-sizing:border-box}
-    html,body{height:100%}
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
     body{
       margin:0;
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
       color:var(--ink);
       overflow:hidden;
-
       background:
-        radial-gradient(1100px 800px at 15% 15%, rgba(255,214,224,.82) 0%, transparent 60%),
-        radial-gradient(900px 700px at 85% 20%, rgba(255,229,241,.74) 0%, transparent 60%),
-        radial-gradient(900px 700px at 75% 90%, rgba(220,190,255,.30) 0%, transparent 58%),
-        linear-gradient(135deg, var(--a), var(--b) 55%, var(--c));
-      animation: bgShift 10s ease-in-out infinite alternate;
-    }
-    @keyframes bgShift{
-      from{ filter: hue-rotate(0deg) saturate(1.05); }
-      to  { filter: hue-rotate(10deg) saturate(1.15); }
+        radial-gradient(1100px 800px at 15% 12%, rgba(255,214,224,.82) 0%, transparent 60%),
+        radial-gradient(900px 700px at 85% 18%, rgba(255,229,241,.76) 0%, transparent 60%),
+        radial-gradient(900px 700px at 85% 85%, rgba(220,190,255,.30) 0%, transparent 58%),
+        linear-gradient(135deg, var(--pink), var(--magenta) 55%, var(--violet));
     }
 
-    /* ===== BIG “I LOVE U SO MUCH” BACKGROUND (VISIBLE) ===== */
-    .bgText{
+    /* -------- BIG “I LOVE U SO MUCH” BACKGROUND -------- */
+    .bg{
       position:fixed; inset:0;
       pointer-events:none;
       z-index:0;
       overflow:hidden;
     }
-    .bgText .layer{
+    .bg .tile{
       position:absolute; inset:-120px;
-      transform: rotate(-14deg) scale(1.08);
-      opacity: 1;
+      transform: rotate(-14deg) scale(1.12);
+      opacity:1;
       mix-blend-mode: overlay;
-      will-change: transform;
-      filter: drop-shadow(0 10px 30px rgba(0,0,0,.10));
+      filter: blur(0);
     }
-    .bgText .layer::before{
+    .bg .tile::before{
       content:
-        "I LOVE U SO MUCH   •   I LOVE U SO MUCH   •   I LOVE U SO MUCH   •   I LOVE U SO MUCH   •   I LOVE U SO MUCH   •   I LOVE U SO MUCH   •   I LOVE U SO MUCH   •   I LOVE U SO MUCH   •   I LOVE U SO MUCH";
+        "I LOVE U SO MUCH  •  I LOVE U SO MUCH  •  I LOVE U SO MUCH  •  I LOVE U SO MUCH  •  "
+        "I LOVE U SO MUCH  •  I LOVE U SO MUCH  •  I LOVE U SO MUCH  •  I LOVE U SO MUCH  •  "
+        "I LOVE U SO MUCH  •  I LOVE U SO MUCH  •  I LOVE U SO MUCH  •  I LOVE U SO MUCH  •  ";
       position:absolute; inset:0;
       white-space:pre;
       font-weight:1000;
-      letter-spacing:.18em;
-      line-height:1.95;
-      font-size: clamp(22px, 4.2vw, 52px); /* bigger */
-      color: rgba(255,255,255,.46);         /* brighter */
+      letter-spacing:.20em;
+      line-height:2.0;
+      font-size: clamp(22px, 3.8vw, 48px);
+      color: rgba(255,255,255,.45); /* strong visibility */
       text-transform:uppercase;
-      animation: textDrift 9s linear infinite;
+      animation: drift 10s linear infinite;
+      text-shadow: 0 10px 40px rgba(0,0,0,.08);
     }
-    @keyframes textDrift{
+    @keyframes drift{
       from{ transform: translate3d(0,0,0); }
-      to  { transform: translate3d(-18%, -10%, 0); }
+      to  { transform: translate3d(-20%, -12%, 0); }
     }
 
-    /* Giant centered phrase */
-    .bgText .giant{
+    /* giant center words */
+    .bg .giant{
       position:absolute;
       left:50%; top:50%;
       transform: translate(-50%,-50%) rotate(-12deg);
       font-weight:1000;
-      letter-spacing:.08em;
       text-transform:uppercase;
-      font-size: clamp(54px, 10.8vw, 140px);
-      line-height:1.02;
+      letter-spacing:.06em;
+      font-size: clamp(70px, 12vw, 170px);
+      line-height:1.0;
       white-space:nowrap;
-      color: rgba(255,255,255,.22);
-      text-shadow: 0 18px 60px rgba(0,0,0,.14);
-      animation: giantFloat 6.5s ease-in-out infinite;
+      color: rgba(255,255,255,.18);
+      text-shadow: 0 20px 70px rgba(0,0,0,.12);
+      animation: giantSway 6.6s ease-in-out infinite;
+      user-select:none;
     }
-    .bgText .giant span{
-      background: linear-gradient(90deg, rgba(255,255,255,.18), rgba(255,255,255,.42), rgba(255,255,255,.18));
+    .bg .giant span{
+      background: linear-gradient(90deg, rgba(255,255,255,.14), rgba(255,255,255,.34), rgba(255,255,255,.14));
       -webkit-background-clip:text; background-clip:text;
       color: transparent;
     }
-    @keyframes giantFloat{
+    @keyframes giantSway{
       0%,100%{ transform: translate(-50%,-50%) rotate(-12deg) translateY(0); }
-      50%{ transform: translate(-50%,-50%) rotate(-12deg) translateY(-12px); }
+      50%{ transform: translate(-50%,-50%) rotate(-12deg) translateY(-10px); }
     }
 
-    /* soft moving light */
-    .light{
+    /* moving soft light */
+    .bgLight{
       position:fixed; inset:-45%;
-      z-index:0; pointer-events:none;
+      z-index:0;
+      pointer-events:none;
       background: radial-gradient(closest-side, rgba(255,255,255,.22), transparent 70%);
       filter: blur(12px);
       animation: lightMove 9s ease-in-out infinite;
       mix-blend-mode: soft-light;
     }
     @keyframes lightMove{
-      0%,100%{ transform: translate(-8%, -6%); }
-      50%{ transform: translate(8%, 6%); }
+      0%,100%{ transform: translate(-10%, -8%); }
+      50%{ transform: translate(10%, 8%); }
     }
 
-    /* hearts */
+    /* -------- floating hearts -------- */
     .hearts{
       position:fixed; inset:0;
       pointer-events:none;
@@ -135,7 +133,7 @@
       user-select:none;
       will-change: transform, opacity;
       animation: floatUp linear forwards;
-      font-size: clamp(14px, 2.6vw, 30px);
+      font-size: clamp(14px, 2.5vw, 28px);
     }
     @keyframes floatUp{
       from{ transform: translate(-50%, 30px) scale(.9); opacity:0; }
@@ -143,7 +141,7 @@
       to{ transform: translate(-50%, -120vh) scale(1.25); opacity:0; }
     }
 
-    /* layout */
+    /* -------- main layout -------- */
     .wrap{
       position:relative;
       z-index:2;
@@ -158,8 +156,8 @@
       border-radius: var(--r2);
       background: linear-gradient(180deg, rgba(255,255,255,.18), rgba(255,255,255,.06));
       border:1px solid rgba(255,255,255,.22);
-      backdrop-filter: blur(14px);
-      box-shadow: 0 40px 150px rgba(0,0,0,.20);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 44px 150px rgba(0,0,0,.20);
     }
     .card{
       border-radius: var(--r1);
@@ -170,7 +168,7 @@
       position:relative;
       isolation:isolate;
     }
-    .glow{
+    .topGlow{
       position:absolute;
       inset:-60% -30% auto -30%;
       height:340px;
@@ -178,10 +176,10 @@
       pointer-events:none;
       z-index:-1;
     }
-
     .header{
       padding:22px 22px 8px;
       display:flex;
+      align-items:center;
       justify-content:center;
     }
     .badge{
@@ -195,7 +193,6 @@
       font-weight:1000;
       letter-spacing:.2px;
     }
-
     .content{
       padding: 0 22px 18px;
       text-align:center;
@@ -207,14 +204,16 @@
       font-weight:1000;
       letter-spacing:-.02em;
     }
-
     .subtitle{
-      margin:0 auto 16px;
-      max-width:60ch;
+      margin:0 auto 14px;
+      max-width:58ch;
       font-size: clamp(14px, 2.2vw, 18px);
+      opacity:.90;
       color: var(--muted);
       line-height:1.55;
     }
+
+    /* typewriter */
     .type{
       display:inline-block;
       border-right: 2px solid rgba(11,16,32,.35);
@@ -233,7 +232,6 @@
     .pill{
       display:flex;
       align-items:center;
-      justify-content:space-between;
       gap:10px;
       padding:10px 12px;
       border-radius:999px;
@@ -241,9 +239,10 @@
       border:1px solid rgba(0,0,0,.08);
       box-shadow: 0 8px 18px rgba(0,0,0,.08);
       font-weight:900;
-      min-width: 250px;
+      min-width: 260px;
+      justify-content:space-between;
     }
-    .pill label{ opacity:.65; font-weight:1000; }
+    .pill label{ opacity:.65; font-weight:900; }
     .pill input{
       border:none; outline:none;
       font: inherit;
@@ -263,9 +262,10 @@
       justify-content:center;
       gap:14px;
       margin:18px 0 8px;
-      min-height:74px;
+      min-height:72px;
       position:relative;
     }
+
     button{
       border:none;
       cursor:pointer;
@@ -279,6 +279,7 @@
       touch-action: manipulation;
     }
     button:active{ transform: translateY(1px) scale(.99); }
+
     .yes{
       background: linear-gradient(135deg, var(--yes1), var(--yes2));
       color:white;
@@ -292,18 +293,20 @@
       background: radial-gradient(closest-side, rgba(255,255,255,.48), transparent 60%);
       transform: translateX(-40%);
       opacity:.55;
-      animation: yesShine 2.6s ease-in-out infinite;
+      animation: yesShine 2.8s ease-in-out infinite;
       pointer-events:none;
     }
     @keyframes yesShine{
       0%,100%{ transform: translateX(-45%); }
       50%{ transform: translateX(45%); }
     }
+
     .no{
       background: linear-gradient(135deg, var(--no1), var(--no2));
       color:white;
       position:relative;
     }
+
     .yes:hover,.no:hover{ filter:brightness(1.02); transform: translateY(-1px); }
 
     .footer{
@@ -318,17 +321,18 @@
       opacity:.78;
     }
 
-    /* modal */
+    /* -------- modal overlay -------- */
     .overlay{
       position:fixed; inset:0;
       display:none;
       place-items:center;
-      background: rgba(0,0,0,.45);
+      background: rgba(0,0,0,.42);
       backdrop-filter: blur(10px);
       z-index:50;
       padding:22px;
     }
     .overlay.show{ display:grid; }
+
     .modal{
       width:min(760px, 96vw);
       border-radius: 28px;
@@ -348,18 +352,24 @@
       pointer-events:none;
     }
     .big{
-      font-size: clamp(30px, 5vw, 56px);
+      font-size: clamp(30px, 5vw, 54px);
       margin:0 0 10px;
       font-weight:1000;
       letter-spacing:-.02em;
     }
     .msg{
       margin:0 auto 16px;
-      max-width:60ch;
-      opacity:.90;
-      line-height:1.55;
+      max-width:70ch;
+      opacity:.92;
+      line-height:1.65;
       color: rgba(11,16,32,.82);
       font-size: clamp(14px, 2.2vw, 18px);
+      white-space: pre-wrap;
+      text-align:left;
+      background: rgba(17,24,39,.04);
+      border: 1px solid rgba(17,24,39,.08);
+      padding: 14px 14px;
+      border-radius: 16px;
     }
     .close{
       background:#111827;
@@ -383,11 +393,11 @@
   </style>
 </head>
 <body>
-  <div class="bgText" aria-hidden="true">
-    <div class="layer"></div>
-    <div class="giant"><span>I LOVE U SO MUCH</span> 💗</div>
+  <div class="bg" aria-hidden="true">
+    <div class="tile"></div>
+    <div class="giant"><span>I&nbsp;LOVE&nbsp;U&nbsp;SO&nbsp;MUCH</span> 💗</div>
   </div>
-  <div class="light" aria-hidden="true"></div>
+  <div class="bgLight" aria-hidden="true"></div>
 
   <div class="hearts" id="hearts" aria-hidden="true"></div>
   <canvas id="confetti" width="0" height="0" aria-hidden="true"></canvas>
@@ -395,7 +405,7 @@
   <div class="wrap">
     <div class="frame">
       <div class="card">
-        <div class="glow"></div>
+        <div class="topGlow"></div>
 
         <div class="header">
           <div class="badge">💌 Becher → Denisa</div>
@@ -406,11 +416,17 @@
           <p class="subtitle"><span class="type" id="typeText"></span></p>
 
           <div class="inputs">
-            <div class="pill"><label>From</label><input id="fromName" value="Becher" /></div>
-            <div class="pill"><label>To</label><input id="toName" value="Denisa" /></div>
+            <div class="pill">
+              <label>From</label>
+              <input id="fromName" value="Becher" />
+            </div>
+            <div class="pill">
+              <label>To</label>
+              <input id="toName" value="Denisa" />
+            </div>
           </div>
 
-          <div class="hint">Tap anywhere for little hearts ✨ (and try the “No” button 😄)</div>
+          <div class="hint">Tap anywhere for hearts ✨ (and try pressing “No” 😄)</div>
 
           <div class="actions">
             <button class="yes" id="yesBtn">Yes! 💖</button>
@@ -428,198 +444,212 @@
   <div class="overlay" id="overlay" aria-hidden="true">
     <div class="modal">
       <h2 class="big">YAAAY! 🥰💞</h2>
-      <p class="msg" id="msgText"></p>
-      <button class="close" id="closeBtn">Send me a kiss 😘</button>
+      <div class="msg" id="msgText"></div>
+      <button class="close" id="closeBtn">Close 💘</button>
     </div>
   </div>
 
   <script>
-    // Parallax the background text slightly (pro effect)
-    const bgLayer = document.querySelector(".bgText .layer");
-    window.addEventListener("pointermove", (e) => {
-      const x = (e.clientX / window.innerWidth - 0.5) * 16;
-      const y = (e.clientY / window.innerHeight - 0.5) * 12;
-      bgLayer.style.transform = `rotate(-14deg) scale(1.08) translate(${x}px, ${y}px)`;
-    });
-
-    // Typewriter lines
+    // ------- Typewriter text -------
     const typeEl = document.getElementById("typeText");
-    const lines = [
-      "You are the best 💗 — I made this page just for you.",
-      "I love u so much… even distance can’t change that.",
-      "Press “Yes” and make me the happiest guy 😌💘"
+    const typeLines = [
+      "You are the best 💗 — I made this just for you.",
+      "Even far away, you’re still my favorite person.",
+      "Press “Yes” and make me smile 😌💘"
     ];
-    let L=0, i=0, del=false;
+    let line = 0, i = 0, deleting = false;
+
     function tick(){
-      const t = lines[L];
-      if(!del){
+      const current = typeLines[line];
+      if (!deleting){
         i++;
-        typeEl.textContent = t.slice(0,i);
-        if(i>=t.length){ del=true; setTimeout(tick, 1100); return; }
-      }else{
+        typeEl.textContent = current.slice(0,i);
+        if (i >= current.length){
+          deleting = true;
+          setTimeout(tick, 1100);
+          return;
+        }
+      } else {
         i--;
-        typeEl.textContent = t.slice(0,i);
-        if(i<=0){ del=false; L=(L+1)%lines.length; }
+        typeEl.textContent = current.slice(0,i);
+        if (i <= 0){
+          deleting = false;
+          line = (line + 1) % typeLines.length;
+        }
       }
-      setTimeout(tick, del?28:38);
+      setTimeout(tick, deleting ? 28 : 38);
     }
     tick();
 
-    // Hearts
+    // ------- Floating hearts -------
     const heartsLayer = document.getElementById("hearts");
-    const heartChars = ["💗","💖","💘","💝","💞","💕","❤️","🫶"];
-    function spawnHeart({x=null,y=null,big=false}={}){
-      const el=document.createElement("div");
-      el.className="heart";
-      el.textContent=heartChars[Math.floor(Math.random()*heartChars.length)];
-      const left=x ?? (Math.random()*window.innerWidth);
-      const startY=y ?? (window.innerHeight+30);
-      el.style.left=left+"px";
-      el.style.top=startY+"px";
-      el.style.fontSize=big?"36px":"";
-      const dur=(big?3.8:5.2)+Math.random()*3.0;
-      el.style.animationDuration=dur+"s";
-      el.style.opacity=(0.55+Math.random()*0.4).toFixed(2);
+    const heartChars = ["💗","💖","💘","💝","💞","💕","❤️","🫶","🤍"];
+
+    function spawnHeart({x=null, y=null, big=false} = {}) {
+      const el = document.createElement("div");
+      el.className = "heart";
+      el.textContent = heartChars[Math.floor(Math.random() * heartChars.length)];
+
+      const left = x ?? (Math.random() * window.innerWidth);
+      const startY = y ?? (window.innerHeight + 30);
+
+      el.style.left = left + "px";
+      el.style.top  = startY + "px";
+      el.style.fontSize = big ? "34px" : "";
+
+      const dur = (big ? 3.8 : 5.2) + Math.random() * 3.0;
+      el.style.animationDuration = dur + "s";
+      el.style.opacity = (0.55 + Math.random() * 0.4).toFixed(2);
+
       heartsLayer.appendChild(el);
-      setTimeout(()=>el.remove(), dur*1000+250);
+      setTimeout(() => el.remove(), dur * 1000 + 250);
     }
-    setInterval(()=>spawnHeart(), 220);
 
-    function burst(cx,cy){
-      for(let k=0;k<32;k++){
-        setTimeout(()=>{
-          const jx=cx+(Math.random()-0.5)*340;
-          const jy=cy+(Math.random()-0.5)*160;
-          spawnHeart({x:jx,y:jy,big:Math.random()>0.72});
-        }, k*14);
+    setInterval(() => spawnHeart(), 220);
+
+    function heartBurst(cx, cy) {
+      for (let k = 0; k < 32; k++) {
+        setTimeout(() => {
+          const jx = cx + (Math.random() - 0.5) * 340;
+          const jy = cy + (Math.random() - 0.5) * 160;
+          spawnHeart({ x: jx, y: jy, big: Math.random() > 0.72 });
+        }, k * 14);
       }
     }
-    window.addEventListener("click",(e)=>{
-      if(!document.getElementById("overlay").classList.contains("show")){
-        spawnHeart({x:e.clientX,y:e.clientY,big:Math.random()>0.84});
-      }
-    },{capture:true});
 
-    // No button dodge
-    const noBtn=document.getElementById("noBtn");
-    function moveNo(){
-      const pad=14;
-      const r=noBtn.getBoundingClientRect();
-      const maxX=window.innerWidth-r.width-pad;
-      const maxY=window.innerHeight-r.height-pad;
-      const x=Math.max(pad, Math.random()*maxX);
-      const y=Math.max(pad, Math.random()*maxY);
-      noBtn.style.position="fixed";
-      noBtn.style.left=x+"px";
-      noBtn.style.top=y+"px";
-      noBtn.style.zIndex=40;
+    // Tap anywhere => mini heart
+    window.addEventListener("click", (e) => {
+      const overlayOpen = document.getElementById("overlay").classList.contains("show");
+      if (!overlayOpen) spawnHeart({ x: e.clientX, y: e.clientY, big: Math.random() > 0.84 });
+    }, {capture:true});
+
+    // ------- Playful "No" button (dodges) -------
+    const noBtn = document.getElementById("noBtn");
+    function moveNoButton() {
+      const padding = 14;
+      const rect = noBtn.getBoundingClientRect();
+      const maxX = window.innerWidth - rect.width - padding;
+      const maxY = window.innerHeight - rect.height - padding;
+
+      const x = Math.max(padding, Math.random() * maxX);
+      const y = Math.max(padding, Math.random() * maxY);
+
+      noBtn.style.position = "fixed";
+      noBtn.style.left = x + "px";
+      noBtn.style.top  = y + "px";
+      noBtn.style.zIndex = 40;
     }
-    noBtn.addEventListener("mouseenter", moveNo);
-    noBtn.addEventListener("touchstart",(e)=>{e.preventDefault();moveNo();},{passive:false});
-    noBtn.addEventListener("click", moveNo);
+    noBtn.addEventListener("mouseenter", moveNoButton);
+    noBtn.addEventListener("touchstart", (e) => { e.preventDefault(); moveNoButton(); }, {passive:false});
+    noBtn.addEventListener("click", moveNoButton);
 
-    // Confetti (white, clean)
-    const canvas=document.getElementById("confetti");
-    const ctx=canvas.getContext("2d");
-    let conf=[], raf=null;
-    function resize(){
-      canvas.width=window.innerWidth*devicePixelRatio;
-      canvas.height=window.innerHeight*devicePixelRatio;
-      canvas.style.width=window.innerWidth+"px";
-      canvas.style.height=window.innerHeight+"px";
+    // ------- Confetti (canvas) -------
+    const canvas = document.getElementById("confetti");
+    const ctx = canvas.getContext("2d");
+    let confetti = [];
+    let raf = null;
+
+    function resizeCanvas(){
+      canvas.width = window.innerWidth * devicePixelRatio;
+      canvas.height = window.innerHeight * devicePixelRatio;
+      canvas.style.width = window.innerWidth + "px";
+      canvas.style.height = window.innerHeight + "px";
       ctx.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0);
     }
-    window.addEventListener("resize", resize); resize();
+    window.addEventListener("resize", resizeCanvas);
+    resizeCanvas();
 
-    function confettiStart(){
-      conf=[];
-      for(let i=0;i<200;i++){
-        conf.push({
-          x:Math.random()*window.innerWidth,
-          y:-30-Math.random()*window.innerHeight*0.4,
-          w:4+Math.random()*7,
-          h:6+Math.random()*10,
-          vx:-2+Math.random()*4,
-          vy:2+Math.random()*5,
-          r:Math.random()*Math.PI,
-          vr:(-0.2+Math.random()*0.4),
-          life:150+Math.random()*90
+    function startConfetti(){
+      const count = 200;
+      confetti = [];
+      for (let i=0;i<count;i++){
+        confetti.push({
+          x: Math.random()*window.innerWidth,
+          y: -20 - Math.random()*window.innerHeight*0.4,
+          r: 4 + Math.random()*7,
+          vx: -2.2 + Math.random()*4.4,
+          vy: 2.2 + Math.random()*5.2,
+          rot: Math.random()*Math.PI,
+          vr: (-0.25 + Math.random()*0.5),
+          life: 150 + Math.random()*100
         });
       }
-      if(raf) cancelAnimationFrame(raf);
+      if (raf) cancelAnimationFrame(raf);
       loop();
-      setTimeout(()=>{
-        if(raf) cancelAnimationFrame(raf);
+      setTimeout(() => {
+        if (raf) cancelAnimationFrame(raf);
         raf=null;
         ctx.clearRect(0,0,window.innerWidth,window.innerHeight);
-      }, 3600);
+      }, 3800);
     }
+
     function loop(){
       ctx.clearRect(0,0,window.innerWidth,window.innerHeight);
-      for(const p of conf){
-        p.x+=p.vx; p.y+=p.vy; p.r+=p.vr; p.vy*=1.01; p.life-=1;
+      for (const p of confetti){
+        p.x += p.vx;
+        p.y += p.vy;
+        p.rot += p.vr;
+        p.vy *= 1.012;
+        p.life -= 1;
+
         ctx.save();
-        ctx.translate(p.x,p.y);
-        ctx.rotate(p.r);
-        ctx.globalAlpha=Math.max(0, Math.min(1, p.life/230));
-        ctx.fillStyle="rgba(255,255,255,.95)";
-        ctx.fillRect(-p.w/2,-p.h/2,p.w,p.h);
+        ctx.translate(p.x, p.y);
+        ctx.rotate(p.rot);
+        ctx.globalAlpha = Math.max(0, Math.min(1, p.life/240));
+        ctx.fillStyle = "rgba(255,255,255,.95)";
+        ctx.fillRect(-p.r/2, -p.r/2, p.r, p.r*1.5);
         ctx.restore();
       }
-      conf = conf.filter(p=>p.life>0 && p.y < window.innerHeight+60);
-      raf=requestAnimationFrame(loop);
+      confetti = confetti.filter(p => p.life > 0 && p.y < window.innerHeight + 60);
+      raf = requestAnimationFrame(loop);
     }
 
-    // YES + modal
-    const yesBtn=document.getElementById("yesBtn");
-    const overlay=document.getElementById("overlay");
-    const closeBtn=document.getElementById("closeBtn");
-    const fromName=document.getElementById("fromName");
-    const toName=document.getElementById("toName");
-    const msgText=document.getElementById("msgText");
+    // ------- YES action + modal message -------
+    const yesBtn = document.getElementById("yesBtn");
+    const overlay = document.getElementById("overlay");
+    const closeBtn = document.getElementById("closeBtn");
+    const fromName = document.getElementById("fromName");
+    const toName = document.getElementById("toName");
+    const msgText = document.getElementById("msgText");
 
-    yesBtn.addEventListener("click",()=>{
-      const r=yesBtn.getBoundingClientRect();
-      burst(r.left+r.width/2, r.top+r.height/2);
-      confettiStart();
-
-      const from=(fromName.value||"Becher").trim();
-      const to=(toName.value||"Denisa").trim();
-      msgText.textContent =
-        msgText.innerHTML = `
-`Denisa 💗
-
-You are my beloved girlfriend 💕💕
-but you are also my best friend 💑
-
+    const loveMessage =
+`You are my beloved girlfriend 💕💕 but you are also my best friend 💑
 my love ♥️
 my heart 💗🤍
-my gift 🎁
-my future ♾️
-my motivation 🤩
-my princess 👑
-my home 😍
-my safe place 😘
+my gift🎁
+my future♾️
+my motivation🤩
+my princess👑
+my home😍
+my safe place😘
 
-I love you so much and happy Valentine Day ma baby 🥰
+I love you so much and happy valentine day for you ma baby 🥰`;
 
-— your faithful Becher 💘`
-;
-      
+    yesBtn.addEventListener("click", () => {
+      const r = yesBtn.getBoundingClientRect();
+      heartBurst(r.left + r.width/2, r.top + r.height/2);
+      startConfetti();
+
+      const from = (fromName.value || "Becher").trim();
+      const to   = (toName.value || "Denisa").trim();
+
+      msgText.textContent = `${to} 💗\n\n${loveMessage}\n\n— ${from}`;
+
       overlay.classList.add("show");
-      overlay.setAttribute("aria-hidden","false");
+      overlay.setAttribute("aria-hidden", "false");
     });
 
-    closeBtn.addEventListener("click",()=>{
+    closeBtn.addEventListener("click", () => {
       overlay.classList.remove("show");
-      overlay.setAttribute("aria-hidden","true");
-      burst(window.innerWidth/2, window.innerHeight/2);
+      overlay.setAttribute("aria-hidden", "true");
+      heartBurst(window.innerWidth/2, window.innerHeight/2);
     });
 
-    overlay.addEventListener("click",(e)=>{
-      if(e.target===overlay) closeBtn.click();
+    overlay.addEventListener("click", (e) => {
+      if (e.target === overlay) closeBtn.click();
     });
   </script>
 </body>
 </html>
+
 
